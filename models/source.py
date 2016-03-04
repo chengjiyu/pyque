@@ -32,10 +32,16 @@ class Source(object):
                 self.__comp_dist_params = kwargs['comp_dist_params']
 
         self.action = self.__env.process(self.run())
-        self.__dst_server = None
+        self.__dst = None
+
+    def get_dst(self):
+        return self.__dst
+    def set_dst(self, destination):
+        assert isinstance(destination, MsgQueue)
+        self.__dst = destination
 
     def run(self):
-        assert (self.__dst_server is not None)
+        assert (self.__dst is not None)
         while True:
             interval = random.exponential(self.__gen_rate)
             packet_num = self.__comp_dist(self.__comp_dist_params)
