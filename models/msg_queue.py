@@ -1,15 +1,16 @@
-from unit import Message, Pdu
-from server import BaseServer, Server
 import simpy
 from collections import deque
 
+from .unit import Message, Pdu
+from .server import BaseServer, Server
 
 class MsgQueue(object):
     '''
     The queue that waits for serve
     FCFS(FIFO)
     '''
-    def __init__(self, env, server = None):
+
+    def __init__(self, env, server=None):
         self.queue = deque()
         assert isinstance(env, simpy.Environment)
         self.__env = env
@@ -28,8 +29,7 @@ class MsgQueue(object):
         return self.__server
     server = property(get_server, set_server, None, 'Server for this queue')
 
-
-    def on_arrival(self,msg):
+    def on_arrival(self, msg):
         isinstance(msg, Message)
         self.queue.extend([packet.at_arrive() for packet in msg])
 

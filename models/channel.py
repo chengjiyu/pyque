@@ -1,5 +1,6 @@
 from numpy import random
-from unit import Pdu
+from .unit import Pdu
+
 
 class Channel(object):
 
@@ -14,7 +15,7 @@ class ErrorChannel(Channel):
         pass
 
     def get_available(self):
-        return random.randint(0,1400,)
+        return random.randint(0, 1400,)
 
     def do_serve(self, serve_pdu):
         assert isinstance(serve_pdu, Pdu)

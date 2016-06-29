@@ -1,7 +1,8 @@
 import simpy
-from unit import Pdu
-from channel import ErrorChannel, Channel
 from numpy import random
+
+from .unit import Pdu
+from .channel import ErrorChannel, Channel
 
 
 class Server(object):
@@ -18,21 +19,21 @@ class BaseServer(Server):
         self.__queue = queue
         self.__channel = None
 
-
     def get_channel(self):
         return self.__channel
+
     def set_channel(self, channel):
         assert isinstance(channel, Channel)
         self.__channel = channel
-    channel = property(get_channel, set_channel, None, 'the associated channel model')
+    channel = property(
+        get_channel, set_channel, None, 'the associated channel model')
 
-    #TODO: get the serve size according to channel state
+    # TODO: get the serve size according to channel state
     def get_serve_size(self):
         return self.__channel.get_available()
 
-
-    #TODO: get the service time according to channel model
-    #TODO: get error prob according to channel model
+    # TODO: get the service time according to channel model
+    # TODO: get error prob according to channel model
     def serve(self, serve_pdu):
         assert isinstance(serve_pdu, Pdu)
         service_time, error = self.__channel.do_serve(serve_pdu)

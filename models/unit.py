@@ -1,7 +1,9 @@
 import simpy
 from collections import deque
 
-# ###############################  Source Units ################################ #
+from . import source_model
+
+# ###############################  Source Units ###############################
 
 
 class Message(object):
@@ -14,15 +16,17 @@ class Message(object):
 
     msg_num = 0
 
-    def __init__(self, env, number):
+    def __init__(self, env, s_m,  number):
         Message.msg_num += 1
         self.__index = Message.msg_num
         assert(isinstance(env, simpy.Environment))
         self.__env = env
+        assert(isinstance(s_m, source_model.BaseSourceModel))
+        self.__source_model = s_m
         assert(isinstance(number, int))
         self.packets_num = number
         #TODO the size of packet should be configurable
-        self.packets = [Packet(self.__env, 1400) for i in range(self.packets_num)]
+        self.packets = [Packet(self.__env, self.__source_model, 1400) for i in range(self.packets_num)]
 
         self.create_time, self.create = None, False
         self.arrive_time, self.arrive = None, False
@@ -46,9 +50,11 @@ class Packet(object):
 
     pkt_num = 0
 
-    def __init__(self, env, size):
+    def __init__(self, env, sm, size):
         assert isinstance(env, simpy.Environment)
+        assert isinstance(sm, source_model.BaseSourceModel)
         self.__env = env
+        self.__source_model = sm
         Packet.pkt_num += 1
         self.__index = Packet.pkt_num
         self.size = size
@@ -85,11 +91,13 @@ class Packet(object):
         return self
 
     def at_served(self):
+        self.__source_model.on_served()
         self.served_time = self.__env.now
         self.served = True
         return self
 
     def at_dropped(self):
+        self.__source_model.on_droped()
         self.dropped_time = self.__env.now
         self.dropped = True
         return self
@@ -127,6 +135,10 @@ class Segment(object):
         self.__env = env
         self.__pkt = None
         self.length =length
+        #__tags[0] : is the begin of a packet
+        #__tags[1] : is middle of a packet
+        #__tags[2] : is end of a packet
+
         self.__tags = [True, False, True]
 
     def get_begin(self):
