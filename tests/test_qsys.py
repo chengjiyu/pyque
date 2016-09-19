@@ -1,6 +1,10 @@
+import random
 import simpy
 from models import source, msg_queue, server
 from models import source_model, channel
+
+RANDOM_SEED = 42
+SIM_TIME = 20       # Simulation time
 
 def session():
     menv = simpy.Environment()
@@ -12,6 +16,7 @@ def session():
     cn = channel.ErrorChannel()
     mq.server.set_channel(cn)
 
+    random.seed(RANDOM_SEED)        # This helps reproducing the results
     menv.run(until = 1000)
 
 def session1():

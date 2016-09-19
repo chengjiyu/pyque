@@ -56,4 +56,4 @@ class BaseServer():
             if serve_pdu is None:
                 yield self.__env.timeout(1)
             else:
-                self.serve(serve_pdu)
+                yield self.__env.process(self.serve(serve_pdu))     # add yield self.__env.process() by chengjiyu on 2016/9/19

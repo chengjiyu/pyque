@@ -79,7 +79,7 @@ class Packet(object):
         if self.serve_on:
             msg += '\t serve on = %f' % self.serve_on_time
         if self.dropped:
-            msg += '\t dropped =' % self.dropped_time
+            msg += '\t dropped = %f' % self.dropped_time        # add %f by chengjiyu on 2016/9/19
         if self.served:
             msg += '\t served = {0:f} \t service_time = {1:f}' \
                 .format(self.served_time, self.served_time - self.serve_on_time)
@@ -108,7 +108,7 @@ class Packet(object):
         self.__source_model.on_droped()
         self.dropped_time = self.__env.now
         self.dropped = True
-        print("packet dropping " + self.__str__())
+        print("packet dropping " + str(self.__str__()))     # add str() by chengjiyu on 2016/9/19
         return self
 
     def get(self, length):

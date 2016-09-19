@@ -24,7 +24,7 @@ class ErrorChannel(Channel):
             error = True
         else:
             error = False
-        duration = random.geometric(0.1)
+        duration = random.geometric(0.2)
         return duration, error
 
 class FixedChannel(Channel):
