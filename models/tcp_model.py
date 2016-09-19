@@ -30,5 +30,18 @@ class TcpReno():
             func()
         return wrapper
 
-    def on_
+    def on_dupack(self, func):
+        def wrapper(self):
+            self.__cwnd = max(self.__cwnd / 2, 1)
+            self.__ssth = max(self.__cwnd, 2)
+            func()
+        return wrapper
+
+    def on_timeout(self, func):
+        def wrapper(self):
+            self.__ssth = max(self.__cwnd / 2, 2)
+            self.__cwnd = 0
+            func()
+        return wrapper
+
 

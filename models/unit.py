@@ -34,6 +34,8 @@ class Message(object):
         self.served_time, self.served = None, False
         self.serve_on_time, self.serve_on = None, False
 
+        print("New Message generated, ID : {0:d}".format(self.__index))
+
     def __getitem__(self, item):
         assert isinstance(item, int)
         return self.packets[item]
@@ -67,6 +69,8 @@ class Packet(object):
 
         self.segmented = False
 
+        print("new packet generated with id : {0:d}".format(self.__index))
+
     def __str__(self):
         msg = 'Packet\tid=%d\t create = %f\t size = %d' \
               % (self.__index, self.create_time, self.size)
@@ -79,32 +83,37 @@ class Packet(object):
         if self.served:
             msg += '\t served = {0:f} \t service_time = {1:f}' \
                 .format(self.served_time, self.served_time - self.serve_on_time)
+        return msg
 
     def at_arrive(self):
         self.arrive = True
         self.arrive_time = self.__env.now
+        print("arrive at queue %s" % self)
         return self
 
     def at_serve_on(self):
         self.serve_on_time = self.__env.now
         self.serve_on = True
+        print("start serve %s" % self)
         return self
 
     def at_served(self):
         self.__source_model.on_served()
         self.served_time = self.__env.now
         self.served = True
+        print("finish serve %s" % self)
         return self
 
     def at_dropped(self):
         self.__source_model.on_droped()
         self.dropped_time = self.__env.now
         self.dropped = True
+        print("packet dropping " + self.__str__())
         return self
 
     def get(self, length):
         assert length <= self.size
-        seg = Segment(length)
+        seg = Segment(self.__env, length)
         seg.packet = self
         self.size -= length
         seg.end_of_packet = (self.size == 0)

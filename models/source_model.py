@@ -1,5 +1,3 @@
-import logging
-
 import simpy
 import numpy as np
 
@@ -12,9 +10,8 @@ class BaseSourceModel():
     on_served() : decorator for feedback on the successful delivering
     on_dropped() : decorator for feedback on the fail delivering
     '''
-    def __init__(self, env):
-        assert (isinstance(env, simpy.Environment))
-        self.__env = env
+    def __init__(self):
+        pass
 
     def get_pkt_num(self):
         return 1
@@ -23,16 +20,15 @@ class BaseSourceModel():
         return 1.
 
     def on_served(self):
-        logging.info('The source received feedback for successful delivering')
+        print('The source received feedback for successful delivering')
 
     def on_droped(self):
-        logging.info('The source received feedback for transmission failure')
+        print('The source received feedback for transmission failure')
 
 class MMPPModel(BaseSourceModel):
     '''The Markov Modulated Poisson Process Source Model'''
 
-    def __init__(self, env, Q, Lambda):
-        super().__init__(env)
+    def __init__(self, Q, Lambda):
         assert(len(np.shape(Q)) is 2)
         assert(len(np.shape(Lambda)) is 1)
         assert(np.shape(Q)[0] == np.shape(Q)[1])
@@ -62,8 +58,7 @@ class MMPPModel(BaseSourceModel):
 class TcpSourceModel(BaseSourceModel):
     '''The emulated TCP source model'''
 
-    def __init__(self, env, rtt):
-        super().__init__(env)
+    def __init__(self, rtt):
         self.__rtt = rtt
         self.segsize = 1440
         self.__cwnd = 1
@@ -86,12 +81,13 @@ class TcpSourceModel(BaseSourceModel):
     def on_served(self):
         if self.__cwnd < self.__ssth:
             self.__cwnd += 1
-            logging.info("Acked in Slow Start Phase")
-            logging.info("cwnd is {0}, ssth is {1}".format(self.__cwnd, self.__ssth))
+            print("Acked in Slow Start Phase")
+            print("cwnd is {0}, ssth is {1}".format(self.__cwnd, self.__ssth))
         else:
-            logging.info("Acked in Congestion avoidance")
+            print("Acked in Congestion avoidance")
             self.__cum += 1
-            if self.__cum >= self.__cwnd:
+            if self.__cum == self.__cwnd:
                 self.__cwnd += 1
-            logging.info("cwnd is {0}, ssth is {1}".format(self.__cwnd, self.__ssth))
+                self.__cum = 0
+            print("cwnd is {0}, ssth is {1}".format(self.__cwnd, self.__ssth))
 

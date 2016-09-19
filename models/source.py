@@ -1,3 +1,4 @@
+import logging
 import simpy
 from numpy import random
 
@@ -15,7 +16,7 @@ class BaseSource(object):
     dst : where the generated massage is sent to
     """
 
-    def __init__(self, env, source_model, **kwargs):
+    def __init__(self, env, source_model):
         assert(isinstance(env, simpy.Environment))
         assert(isinstance(source_model, BaseSourceModel))
         self.__env = env
@@ -33,9 +34,10 @@ class BaseSource(object):
 
     def run(self):
         assert(self.__dst is not None)
+        print("source generator start run at %d" % self.__env.now)
         while True:
             interval = self.__source_model.get_interval()
-            pkg_num = self.__source_model.get_pkg_num()
+            pkg_num = self.__source_model.get_pkt_num()
             msg = Message(self.__env, self.__source_model, pkg_num)
             self.sendto(self.__dst, msg)
             yield self.__env.timeout(interval)
