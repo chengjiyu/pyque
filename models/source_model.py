@@ -37,13 +37,15 @@ class MMPPModel(BaseSourceModel):
         self.__state_transition = np.cumsum(self.__Q, axis = 1)
         self.__Lambda = np.atleast_1d(Lambda)
         self.__states = np.array([i for i in range(Lambda.shape[0])])
-        self.__cur_state = np.random.randint(0, self.__states[-1])
+        self.__cur_state = np.random.randint(0, self.__states[-1])      # self.__states=[0,1,2,3]; self.__cur_state=[0,1,2]
 
     def get_interval(self):
         state = self.__states[self.__cur_state]
         rate = self.__Lambda[state]
         dice = np.random.random()
         self.__cur_state = np.argwhere(self.__state_transition[self.__cur_state] > dice)[0][0]
+        # Find the indices of array elements that are non-zero, grouped by element.
+        # return position of the first meet specified condition
         return np.random.exponential(1./ rate) / rate
 
     @property

@@ -36,10 +36,10 @@ class BaseServer():
         assert isinstance(serve_pdu, Pdu)
         service_time, error = self.__channel.do_serve(serve_pdu)
         serve_pdu.on_serve_begin()
-        print("server start to serve pdu at : {0:d}".format(self.__env.now))
+        print("server start to serve pdu at : {0:f}".format(self.__env.now))        # {0:d} --> {0:f} by chengjiyu on 2016/9/23
         yield self.__env.process(self.do_serve(service_time))
 
-        print("server finish serving pdu at : {0:d}".format(self.__env.now))
+        print("server finish serving pdu at : {0:f}".format(self.__env.now))        # {0:d} --> {0:f} by chengjiyu on 2016/9/23
         dice = random.random()
         if error:
             serve_pdu.on_dropped()

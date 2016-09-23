@@ -22,6 +22,8 @@ class TcpReno():
         def wrapper(self):
             if self.__cwnd <= self.__ssth:
                 self.__cwnd += 1
+                print("Acked in Slow Start Phase")
+                print("cwnd is {0}, ssth is {1}".format(self.__cwnd, self.__ssth))
             else:
                 self.__accumulator += 1
                 if self.__accumulator == self.__cwnd:

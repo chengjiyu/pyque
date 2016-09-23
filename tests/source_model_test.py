@@ -9,7 +9,7 @@ class ModelTest(unittest.TestCase):
         self.env = simpy.Environment()
         Q = np.array([[0.1,0.2,0.3,0.4], [0.25,0.25,0.25,0.25], [0.15, 0.25, 0.35, 0.25], [0,0.3,0.3,0.4]])
         Lambda = np.array([0.5, 1.0, 1.5, 2.0])
-        self.src = source_model.MMPPModel(self.env, Q, Lambda)
+        self.src = source_model.MMPPModel(Q, Lambda)
         pass
 
     def tearDown(self):
