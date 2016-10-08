@@ -18,9 +18,9 @@ class ErrorChannel(Channel):
 
     def do_serve(self, serve_pdu):
         assert isinstance(serve_pdu, Pdu)
-        err_p = random.random()
-        dice = random.random()
-        if dice < err_p:
+        err_p = random.random()                  # modify packet error rate by chengjiyu on 2016/9/28
+        dice = random.random()                      # random.random() --> 0.1
+        if dice < 0.01:
             error = True
         else:
             error = False

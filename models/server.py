@@ -41,10 +41,15 @@ class BaseServer():
 
         print("server finish serving pdu at : {0:f}".format(self.__env.now))        # {0:d} --> {0:f} by chengjiyu on 2016/9/23
         dice = random.random()
-        if error:
-            serve_pdu.on_dropped()
+        # add timeout by chengjiyu on 2016/10/8
+        rtt = service_time
+        if rtt < 2:
+            if error:
+                serve_pdu.on_dropped()
+            else:
+                serve_pdu.on_serve_end()
         else:
-            serve_pdu.on_serve_end()
+            serve_pdu.on_timeout()
 
     def do_serve(self, duration):
         yield(self.__env.timeout(duration))

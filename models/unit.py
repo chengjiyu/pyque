@@ -111,6 +111,10 @@ class Packet(object):
         print("packet dropping " + str(self.__str__()))     # add str() by chengjiyu on 2016/9/19
         return self
 
+    # add timeout by chengjiyu on 2016/10/8
+    def at_timeout(self):
+        self.__source_model.on_timeout()
+
     def get(self, length):
         assert length <= self.size
         seg = Segment(self.__env, length)
@@ -232,3 +236,7 @@ class Pdu(object):
     def on_dropped(self):
         for seg in self:
             seg.packet.at_dropped()
+
+    def on_timeout(self):
+        for seg in self:
+            seg.packet.at_timeout()

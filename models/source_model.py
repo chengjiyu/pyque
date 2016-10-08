@@ -38,6 +38,11 @@ class MMPPModel(BaseSourceModel):
         self.__Lambda = np.atleast_1d(Lambda)
         self.__states = np.array([i for i in range(Lambda.shape[0])])
         self.__cur_state = np.random.randint(0, self.__states[-1])      # self.__states=[0,1,2,3]; self.__cur_state=[0,1,2]
+        self.__init_cwnd = 1
+        self.__init_ssth = 65535
+        self.__cwnd = 1
+        self.__ssth = 65535
+        self.__accumulator = 0
 
     def get_interval(self):
         state = self.__states[self.__cur_state]
@@ -55,6 +60,29 @@ class MMPPModel(BaseSourceModel):
     @property
     def Q(self):
         return self.__Q
+
+    # add tcp by chengjiyu on 2016/10/8
+    def on_served(self):
+        print('The source received feedback for successful delivering')
+        if self.__cwnd <= self.__ssth:
+            self.__cwnd *= 2
+            print("Acked in Slow Start Phase")
+            print("cwnd is {0}, ssth is {1}".format(self.__cwnd, self.__ssth))
+        else:
+            print("Acked in Congestion avoidance")
+            self.__cwnd += 1
+            print("cwnd is {0}, ssth is {1}".format(self.__cwnd, self.__ssth))
+
+    def on_droped(self):
+        print('The source received feedback for transmission failure')
+        self.__cwnd = max(self.__cwnd / 2, 1)
+        self.__ssth = max(self.__cwnd, 2)
+        print("duplicate acks \ncwnd is {0}, ssth is {1}".format(self.__cwnd, self.__ssth))
+
+    def on_timeout(self):
+        self.__ssth = max(self.__cwnd / 2, 2)
+        self.__cwnd = 1
+        print("time out \ncwnd is {0}, ssth is {1}".format(self.__cwnd, self.__ssth))
 
 
 class TcpSourceModel(BaseSourceModel):
@@ -77,7 +105,7 @@ class TcpSourceModel(BaseSourceModel):
         return self.__ssth
 
     def get_interval(self):
-        rate = self.segsize * self.__cwnd / self.__rtt
+        rate = self.segsize * self.__cwnd / self.__rtt      # ????
         return np.random.exponential(1. / rate) / rate
 
     def on_served(self):
@@ -92,4 +120,10 @@ class TcpSourceModel(BaseSourceModel):
                 self.__cwnd += 1
                 self.__cum = 0
             print("cwnd is {0}, ssth is {1}".format(self.__cwnd, self.__ssth))
+
+    # add duplicate acks by chengjiyu on 2016/9/28
+    def on_droped(self):
+        self.__cwnd = max(self.__cwnd / 2, 1)
+        self.__ssth = max(self.__cwnd, 2)
+        print("duplicate acks \ncwnd is {0}, ssth is {1}".format(self.__cwnd, self.__ssth))
 
