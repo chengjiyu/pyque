@@ -14,35 +14,47 @@ class TcpReno():
     def __init__(self):
         self.__init_cwnd = 1
         self.__init_ssth = 65535
-        self.__cwnd = 1
+        self.__cwnd = 1400
         self.__ssth = 65535
         self.__accumulator = 0
+        self.__segment = 1400       # add segment size by chengjiyu on 2016/10/9
 
     def on_ack(self, func):
         def wrapper(self):
             if self.__cwnd <= self.__ssth:
-                self.__cwnd += 1
+                self.__cwnd += self.__segment
                 print("Acked in Slow Start Phase")
                 print("cwnd is {0}, ssth is {1}".format(self.__cwnd, self.__ssth))
             else:
-                self.__accumulator += 1
-                if self.__accumulator == self.__cwnd:
-                    self.__cwnd += 1
-                    self.__accumulator = 0
+                print("Acked in Congestion avoidance")
+                adder = self.__segment * self.__segment / self.__cwnd
+                adder = int(max(1.0, adder))
+                # self.__accumulator += 1
+                # if self.__accumulator == self.__cwnd:
+                    # self.__cwnd += 1
+                    # self.__accumulator = 0
+                self.__cwnd += adder
+                print("cwnd is {0}, ssth is {1}".format(self.__cwnd, self.__ssth))
             func()
         return wrapper
 
     def on_dupack(self, func):
         def wrapper(self):
-            self.__cwnd = max(self.__cwnd / 2, 1)
-            self.__ssth = max(self.__cwnd, 2)
+            self.__ssth = max(2 * self.__segment, self.__cwnd / 2)
+            self.__cwnd = self.__ssth + 3 * self.__segment
+            # self.__cwnd = max(self.__cwnd / 2, 1)
+            # self.__ssth = max(self.__cwnd, 2)
+            print("duplicate acks \ncwnd is {0}, ssth is {1}".format(self.__cwnd, self.__ssth))
             func()
         return wrapper
 
     def on_timeout(self, func):
         def wrapper(self):
-            self.__ssth = max(self.__cwnd / 2, 2)
-            self.__cwnd = 0
+            # self.__ssth = max(self.__cwnd / 2, 2)
+            # self.__cwnd = 0
+            self.__ssth = max(2 * self.__segment, self.__cwnd / 2)
+            self.__cwnd = self.__segment
+            print("time out \ncwnd is {0}, ssth is {1}".format(self.__cwnd, self.__ssth))
             func()
         return wrapper
 

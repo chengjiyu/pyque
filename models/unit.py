@@ -237,6 +237,7 @@ class Pdu(object):
         for seg in self:
             seg.packet.at_dropped()
 
+    # add time out by chengjiyu on 2016/10/8
     def on_timeout(self):
         for seg in self:
             seg.packet.at_timeout()
