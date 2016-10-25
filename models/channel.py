@@ -1,7 +1,6 @@
 from numpy import random
 from .unit import Pdu
 
-
 class Channel(object):
 
     def __init__(self):
@@ -20,11 +19,11 @@ class ErrorChannel(Channel):
         assert isinstance(serve_pdu, Pdu)
         err_p = random.random()                  # modify packet error rate by chengjiyu on 2016/9/28
         dice = random.random()                      # random.random() --> 0.1
-        if dice < 0.01:
+        if dice < 0.000:
             error = True
         else:
             error = False
-        duration = random.exponential(0.5)        # random.geometric(0.1) --> random.exponential(1.) serve duration is long by chengjiyu on 2016/9/22
+        duration = random.exponential(1.)        # random.geometric(0.1) --> random.exponential(1.) serve duration is long by chengjiyu on 2016/9/22
         return duration, error
 
 class FixedChannel(Channel):

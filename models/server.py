@@ -3,6 +3,7 @@ from numpy import random
 
 from .unit import Pdu
 from .channel import ErrorChannel, Channel
+# from .log import Logger
 
 
 class BaseServer():
@@ -13,6 +14,7 @@ class BaseServer():
         super(BaseServer, self).__init__()
         assert isinstance(env, simpy.Environment)
         self.__env = env
+        # self.__log = Logger('server', 'data.txt')
         self.__queue = queue
         self.__channel = None
         self.action = self.__env.process(self.run())
@@ -43,7 +45,7 @@ class BaseServer():
         dice = random.random()
         # add timeout by chengjiyu on 2016/10/8
         rtt = service_time
-        if rtt < 2:
+        if rtt < 4:
             if error:
                 serve_pdu.on_dropped()
             else:

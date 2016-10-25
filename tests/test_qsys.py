@@ -3,6 +3,7 @@ import simpy
 import numpy as np
 from models import source, msg_queue, server
 from models import source_model, channel
+import logging
 
 RANDOM_SEED = 42
 SIM_TIME = 20       # Simulation time
@@ -31,4 +32,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

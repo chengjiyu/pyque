@@ -3,6 +3,7 @@ from collections import deque
 
 from .unit import Message, Pdu
 from .server import BaseServer
+from .log import Logger
 
 class MsgQueue(object):
     '''
@@ -14,6 +15,7 @@ class MsgQueue(object):
         self.queue = deque()
         assert isinstance(env, simpy.Environment)
         self.__env = env
+        self.__log = Logger('buffer', 'data.txt')
 
         if server:
             self.__server = server
@@ -53,6 +55,8 @@ class MsgQueue(object):
                 else:
                     to_serve -= first.size
                     serve_pdu.append(first.get(first.size))
+                    print('Buffer size:{0}'.format(self.queue.__len__()))       # add output buffer size by chengjiyu on 2016/10/13
+                    self.__log.logger.info('Buffer size:{0}'.format(self.queue.__len__()))
             else:
                 break
         if serve_pdu.filled is 0:
@@ -62,36 +66,36 @@ class MsgQueue(object):
             return serve_pdu
 
 
-    def run(self):
-        while True:
-            try:
-                yield self.__env.process(self.check_queue())
-            except simpy.Interrupt:
-                print("send one pdu to server....")
-                to_serve = self.__server.get_serve_size()
-                serve_pdu = Pdu(self.__env, to_serve)
-                while True:
-                    if self.queue.__len__() > 0:
-                        first = self.queue.popleft()
-                        if first.size > to_serve:
-                            serve_pdu.append(first.get(to_serve))
-                            self.queue.appendleft(first)
-                            break
-                        elif first.size == to_serve:
-                            serve_pdu.append(first.get(to_serve))
-                            break
-                        else:
-                            to_serve -= first.size
-                            serve_pdu.append(first.get(first.size))
-                    else:
-                        break
-                print("Pdu with {0:d} bytes generated".format(serve_pdu.total_size))
-                yield self.__env.process(self.__server.serve(serve_pdu))
-            else:
-                yield self.__env.timeout(10)
-
-    def check_queue(self):
-        if len(self.queue) == 0:
-            yield self.__env.timeout(10)
-        else:
-            pass
+    # def run(self):
+    #     while True:
+    #         try:
+    #             yield self.__env.process(self.check_queue())
+    #         except simpy.Interrupt:
+    #             print("send one pdu to server....")
+    #             to_serve = self.__server.get_serve_size()
+    #             serve_pdu = Pdu(self.__env, to_serve)
+    #             while True:
+    #                 if self.queue.__len__() > 0:
+    #                     first = self.queue.popleft()
+    #                     if first.size > to_serve:
+    #                         serve_pdu.append(first.get(to_serve))
+    #                         self.queue.appendleft(first)
+    #                         break
+    #                     elif first.size == to_serve:
+    #                         serve_pdu.append(first.get(to_serve))
+    #                         break
+    #                     else:
+    #                         to_serve -= first.size
+    #                         serve_pdu.append(first.get(first.size))
+    #                 else:
+    #                     break
+    #             print("Pdu with {0:d} bytes generated".format(serve_pdu.total_size))
+    #             yield self.__env.process(self.__server.serve(serve_pdu))
+    #         else:
+    #             yield self.__env.timeout(10)
+    #
+    # def check_queue(self):
+    #     if len(self.queue) == 0:
+    #         yield self.__env.timeout(10)
+    #     else:
+    #         pass

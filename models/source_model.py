@@ -1,5 +1,6 @@
 import simpy
 import numpy as np
+from .log import Logger
 
 
 class BaseSourceModel():
@@ -33,6 +34,7 @@ class MMPPModel(BaseSourceModel):
         assert(len(np.shape(Lambda)) is 1)
         assert(np.shape(Q)[0] == np.shape(Q)[1])
         assert(np.shape(Q)[0] == len(Lambda))
+        self.__log = Logger('cwnd', 'data.txt')
         self.__Q = np.atleast_2d(Q)
         self.__state_transition = np.cumsum(self.__Q, axis = 1)
         self.__Lambda = np.atleast_1d(Lambda)
@@ -69,6 +71,7 @@ class MMPPModel(BaseSourceModel):
             self.__cwnd += self.__segment
             print("Acked in Slow Start Phase")
             print("cwnd is {0}, ssth is {1}".format(self.__cwnd, self.__ssth))
+            self.__log.logger.info("cwnd is {0}, ssth is {1}".format(self.__cwnd, self.__ssth))
         else:
             print("Acked in Congestion avoidance")
             adder = self.__segment * self.__segment / self.__cwnd
@@ -79,21 +82,24 @@ class MMPPModel(BaseSourceModel):
             # self.__accumulator = 0
             self.__cwnd += adder
             print("cwnd is {0}, ssth is {1}".format(self.__cwnd, self.__ssth))
+            self.__log.logger.info("cwnd is {0}, ssth is {1}".format(self.__cwnd, self.__ssth))
 
     def on_droped(self):
         print('The source received feedback for transmission failure')
-        self.__ssth = max(2 * self.__segment, self.__cwnd / 2)
-        self.__cwnd = self.__ssth + 3 * self.__segment
-        # self.__cwnd = max(self.__cwnd / 2, 1)
+        self.__ssth = max(2 * self.__segment, self.__cwnd // 2)
+        self.__cwnd = self.__ssth# + 3 * self.__segment
+        # self.__cwnd = max(self.__cwnd // 2, 1)
         # self.__ssth = max(self.__cwnd, 2)
         print("duplicate acks \ncwnd is {0}, ssth is {1}".format(self.__cwnd, self.__ssth))
+        self.__log.logger.info("cwnd is {0}, ssth is {1}".format(self.__cwnd, self.__ssth))
 
     def on_timeout(self):
-        # self.__ssth = max(self.__cwnd / 2, 2)
+        # self.__ssth = max(self.__cwnd // 2, 2)
         # self.__cwnd = 0
-        self.__ssth = max(2 * self.__segment, self.__cwnd / 2)
+        self.__ssth = max(2 * self.__segment, self.__cwnd // 2)
         self.__cwnd = self.__segment
         print("time out \ncwnd is {0}, ssth is {1}".format(self.__cwnd, self.__ssth))
+        self.__log.logger.info("cwnd is {0}, ssth is {1}".format(self.__cwnd, self.__ssth))
 
 
 class TcpSourceModel(BaseSourceModel):

@@ -2,6 +2,7 @@ import simpy
 from collections import deque
 
 from . import source_model
+from .log import Logger
 
 # ###############################  Source Units ###############################
 
@@ -21,6 +22,7 @@ class Message(object):
         self.__index = Message.msg_num
         assert(isinstance(env, simpy.Environment))
         self.__env = env
+        # self.__log = Logger('message', 'data.txt')
         assert(isinstance(s_m, source_model.BaseSourceModel))
         self.__source_model = s_m
         assert(isinstance(number, int))
@@ -56,6 +58,7 @@ class Packet(object):
         assert isinstance(env, simpy.Environment)
         assert isinstance(sm, source_model.BaseSourceModel)
         self.__env = env
+        self.__log = Logger('packet', 'data.txt')
         self.__source_model = sm
         Packet.pkt_num += 1
         self.__index = Packet.pkt_num
@@ -82,7 +85,7 @@ class Packet(object):
             msg += '\t dropped = %f' % self.dropped_time        # add %f by chengjiyu on 2016/9/19
         if self.served:
             msg += '\t served = {0:f} \t service_time = {1:f}' \
-                .format(self.served_time, self.served_time - self.serve_on_time)
+                .format(self.served_time, self.served_time - self.arrive_time)        # self.serve_on_time --> self.arrive_time changed by chengjiyu on 2016/10/24
         return msg
 
     def at_arrive(self):
@@ -102,13 +105,15 @@ class Packet(object):
         self.served_time = self.__env.now
         self.served = True
         print("finish serve %s" % self)
+        #self.__log.logger.info("finish serve %s" % self)
         return self
 
     def at_dropped(self):
         self.__source_model.on_droped()
         self.dropped_time = self.__env.now
         self.dropped = True
-        print("packet dropping " + str(self.__str__()))     # add str() by chengjiyu on 2016/9/19
+        print("packet dropping " + str(self.__str__()))
+        #self.__log.logger.info("packet dropping " + str(self.__str__()))        # add str() by chengjiyu on 2016/9/19
         return self
 
     # add timeout by chengjiyu on 2016/10/8
