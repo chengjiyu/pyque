@@ -1,4 +1,6 @@
 import re
+import numpy as np
+from functools import reduce
 import matplotlib.pyplot as plt
 data = []       # 生成的原始数据
 cwnd = []       # 保存过滤得到含有 cwnd 的行
@@ -19,7 +21,7 @@ match = ['cwnd']
 match1 = ['ssth']
 match2 = ['server finish serving pdu at']
 match3 = ['finish serve Packet	id=']
-match4 = ['Buffer size:']
+match4 = ['Buffer size']
 match5 = ['The source received feedback for successful delivering']
 match6 = ['The source received feedback for transmission failure']
 
@@ -37,7 +39,7 @@ for i in range(len(data)):
         time.append(data[i])
     if match3 == re.findall(r'finish serve Packet	id=', data[i]):
         finish.append(data[i])
-    if match4 == re.findall(r'Buffer size:', data[i]):
+    if match4 == re.findall(r'Buffer size', data[i]):
         buffer.append(data[i])
     if match5 == re.findall(r'The source received feedback for successful delivering', data[i]):
         success.append(data[i])
@@ -54,19 +56,19 @@ print('吞吐量 ： %f' %th)
 for i in range(len(cwnd)):
     m = re.findall(r'\d+\.?\d*',cwnd[i])
     cw.append(m[0])
-print(len(cw))
+print(cw)
 
 # 找到ssth的值           
 for i in range(len(ssth)):
     m = re.findall(r'\d+\.?\d*',ssth[i])
     ss.append(m[1])
-print(len(ss))
+print(ss)
 
 # 找到time的值
 for i in range(len(time)):
     m = re.findall(r'\d+\.?\d*',time[i])
     ti.append(m[0])
-print(len(ti))
+print(ti)
 
 # 找到finsih serve Packet id and service_time
 for i in range(len(finish)):
@@ -82,12 +84,31 @@ for i in range(len(buffer)):
 length = length[0:len(service_time)]
 print(length)
 
+# 计算I = Var（X）/E(X)
+N = []
+I_t = []
+V = []
+var_2 = []
+for i in length:
+    N.append(i)
+    l = len(N)
+    narray = np.array(N)
+    sum_1 = narray.sum()
+    narray_2 = narray*narray
+    sum_2 = narray_2.sum()
+    mean = sum_1/l
+    var = sum_2/l-mean**2
+    i_t =var/mean
+    I_t.append(i_t)
+print(I_t)
+print(var_2)
+
 with open ('cwnd.txt', 'w') as c:
     c.writelines(cw)
 # 队长和等待时间
 c = []
 queue = []      # 保存队列长度
-for j in range(max(length)+1):       # j 是队长列表中的值
+for j in set(length):       # j 是队长列表中的值
     queue.append(j)
     b = [i for i, a in enumerate(length) if a == j]      # b 是不同队长对应的索引值
     c.append(b)
@@ -96,7 +117,8 @@ for k in range(len(c)):
     s = 0
     for l in range(len(c[k])):
         s += service_time[c[k][l]]     # [c[k][l]] 是队长列表相同队长对应等待时间的索引值
-    wait.append(s/len(c[k]))
+    if len(c[k]) != 0:
+        wait.append(s/len(c[k]))
 
 print(queue,wait)
 
@@ -115,5 +137,10 @@ plt.title('time-cwnd')
 fig= plt.figure(2)
 plt.plot(queue,wait)
 
+fig= plt.figure(3)
+t_t = [i for i in range(1,len(I_t)+1)]
+plt.plot(t_t,I_t)
+
 # show the figure
 plt.show()
+

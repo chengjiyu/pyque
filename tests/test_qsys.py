@@ -13,8 +13,8 @@ def session1():
 
     # Q = np.array([[0.1, 0.2, 0.3, 0.4], [0.25, 0.25, 0.25, 0.25], [0.15, 0.25, 0.35, 0.25], [0, 0.3, 0.3, 0.4]])
     # Lambda = np.array([0.5, 1.0, 1.5, 2.0])
-    Q = np.array([[0.5, 0.5], [0.5, 0.5]])
-    Lambda = np.array([0.5, 1.0])
+    Q = np.array([[0.9941, 0.059], [0.9941, 0.059]])
+    Lambda = np.array([1.0722, 0.48976])
     mmpp = source_model.MMPPModel(Q, Lambda)
     # tcp = source_model.TcpSourceModel(7000.)
     # src_model = source_model.BaseSourceModel()
@@ -25,7 +25,7 @@ def session1():
     mq.server.set_channel(ch)
 
     random.seed(RANDOM_SEED)        # This helps reproducing the results
-    env.run(until = 500)
+    env.run(until = 10000)
 
 def main():
     session1()

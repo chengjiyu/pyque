@@ -34,7 +34,7 @@ class MMPPModel(BaseSourceModel):
         assert(len(np.shape(Lambda)) is 1)
         assert(np.shape(Q)[0] == np.shape(Q)[1])
         assert(np.shape(Q)[0] == len(Lambda))
-        self.__log = Logger('cwnd', 'data.txt')
+        self.__log = Logger('ack', 'data.txt')
         self.__Q = np.atleast_2d(Q)
         self.__state_transition = np.cumsum(self.__Q, axis = 1)
         self.__Lambda = np.atleast_1d(Lambda)
@@ -67,6 +67,7 @@ class MMPPModel(BaseSourceModel):
     # add tcp by chengjiyu on 2016/10/8
     def on_served(self):
         print('The source received feedback for successful delivering')
+        self.__log.logger.info('The source received feedback for successful delivering')
         if self.__cwnd <= self.__ssth:
             self.__cwnd += self.__segment
             print("Acked in Slow Start Phase")
@@ -86,6 +87,7 @@ class MMPPModel(BaseSourceModel):
 
     def on_droped(self):
         print('The source received feedback for transmission failure')
+        self.__log.logger.info('The source received feedback for transmission failure')
         self.__ssth = max(2 * self.__segment, self.__cwnd // 2)
         self.__cwnd = self.__ssth# + 3 * self.__segment
         # self.__cwnd = max(self.__cwnd // 2, 1)

@@ -105,7 +105,7 @@ class Packet(object):
         self.served_time = self.__env.now
         self.served = True
         print("finish serve %s" % self)
-        #self.__log.logger.info("finish serve %s" % self)
+        self.__log.logger.info("finish serve %s" % self)
         return self
 
     def at_dropped(self):
@@ -113,7 +113,7 @@ class Packet(object):
         self.dropped_time = self.__env.now
         self.dropped = True
         print("packet dropping " + str(self.__str__()))
-        #self.__log.logger.info("packet dropping " + str(self.__str__()))        # add str() by chengjiyu on 2016/9/19
+        self.__log.logger.info("packet dropping " + str(self.__str__()))        # add str() by chengjiyu on 2016/9/19
         return self
 
     # add timeout by chengjiyu on 2016/10/8
