@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="95cf5c07-a043-4c71-87bf-55073047777e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/mmpp_model.py" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/lambda.py" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/channel.py" afterPath="$PROJECT_DIR$/models/channel.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/msg_queue.py" afterPath="$PROJECT_DIR$/models/msg_queue.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/newtow_raphson.py" afterPath="$PROJECT_DIR$/tests/newtow_raphson.py" />
     </list>
     <ignored path="untitled.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -656,7 +651,14 @@
       <option name="project" value="LOCAL" />
       <updated>1478660701879</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="add newtow-raphson method">
+      <created>1479112605951</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1479112605951</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TodoView">
