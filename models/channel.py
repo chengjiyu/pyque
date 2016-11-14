@@ -23,7 +23,7 @@ class ErrorChannel(Channel):
             error = True
         else:
             error = False
-        duration = random.exponential(0.45847)        # random.geometric(0.1) --> random.exponential(1.) serve duration is long by chengjiyu on 2016/9/22
+        duration = random.exponential(0.45847112682641894)        # random.geometric(0.1) --> random.exponential(1.) serve duration is long by chengjiyu on 2016/9/22
         return duration, error
 
 class FixedChannel(Channel):
