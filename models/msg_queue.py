@@ -12,7 +12,7 @@ class MsgQueue(object):
     '''
 
     def __init__(self, env, server=None):
-        self.queue = deque(maxlen=100)
+        self.queue = deque()
         assert isinstance(env, simpy.Environment)
         self.__env = env
         self.__log = Logger('buffer', 'data.txt')

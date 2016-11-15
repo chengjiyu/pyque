@@ -3,7 +3,7 @@ from numpy import random
 
 from .unit import Pdu
 from .channel import ErrorChannel, Channel
-# from .log import Logger
+from .log import Logger
 
 
 class BaseServer():
@@ -14,7 +14,7 @@ class BaseServer():
         super(BaseServer, self).__init__()
         assert isinstance(env, simpy.Environment)
         self.__env = env
-        # self.__log = Logger('server', 'data.txt')
+        self.__log = Logger('server', 'data.txt')
         self.__queue = queue
         self.__channel = None
         self.action = self.__env.process(self.run())
@@ -42,6 +42,7 @@ class BaseServer():
         yield self.__env.process(self.do_serve(service_time))
 
         print("server finish serving pdu at : {0:f}".format(self.__env.now))        # {0:d} --> {0:f} by chengjiyu on 2016/9/23
+        self.__log.logger.info("server finish serving pdu at : {0:f}".format(self.__env.now))
         dice = random.random()
         # add timeout by chengjiyu on 2016/10/8
         rtt = service_time

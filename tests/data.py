@@ -11,7 +11,9 @@ time = []
 ti = []
 finish = []     # 保存过滤得到完成服务 packet 信息
 id = []         # 保存结束服务 packet 的 id
+create = []      # 保存 packet 生成的时间 和 到达队列的时间
 service_time = []   # 保存结束服务 packet 的 服务时间
+served = []     # 保存服务结束的时间
 buffer = []     # 保存过滤得到的 buffer size 行
 length = []     # 保存队列长度
 success = []    # 成功接收的包
@@ -28,7 +30,7 @@ match6 = ['The source received feedback for transmission failure']
 with open ('data.txt', 'r') as d:
     for line in d:
         data.append(line)
-        
+
 # 匹配cwnd 和 time 在的行
 for i in range(len(data)):
     if match == re.findall(r'cwnd', data[i]):
@@ -56,52 +58,67 @@ print('吞吐量 ： %f' %th)
 for i in range(len(cwnd)):
     m = re.findall(r'\d+\.?\d*',cwnd[i])
     cw.append(m[0])
-print(cw)
+print('cwnd: {0}'.format(cw))
 
 # 找到ssth的值           
 for i in range(len(ssth)):
     m = re.findall(r'\d+\.?\d*',ssth[i])
     ss.append(m[1])
-print(ss)
+print('ssth: {0}'.format(ss))
 
 # 找到time的值
 for i in range(len(time)):
     m = re.findall(r'\d+\.?\d*',time[i])
-    ti.append(m[0])
-print(ti)
+    ti.append(float(m[0]))
+print('time: {0}'.format(ti))
 
 # 找到finsih serve Packet id and service_time
 for i in range(len(finish)):
     m = re.findall(r'\d+\.?\d*',finish[i])
-    id.append(m[0])
+    id.append(float(m[0]))
+    create.append(float(m[1]))
     service_time.append(float(m[-1]))
-print(service_time)
+    served.append(float(m[-2]))
+print('ID: {0}'.format(id))
+print('create: {0}'.format(create))
+print('service_time: {0}'.format(service_time))
+print('served_time: {0}'.format(served))
+
+# 找到 packet arrival interval
+def min(x,y):
+    return x-y
+create_2 = create[1:]
+interval = list(map(min,create_2,create))
+print('interval: {0}'.format(interval))
 
 # 找到队列长度值
 for i in range(len(buffer)):
     m = re.findall(r'\d+\.?\d*',buffer[i])
     length.append(int(m[0]))
 length = length[0:len(service_time)]
-print(length)
+print('queue size: {0}'.format(length))
 
 # 计算I = Var（X）/E(X)
 N = []
+N_t = []
 I_t = []
 V = []
 var_2 = []
-for i in length:
+for i in id:
     N.append(i)
     l = len(N)
     narray = np.array(N)
     sum_1 = narray.sum()
+    N_t.append(sum_1)
     narray_2 = narray*narray
     sum_2 = narray_2.sum()
     mean = sum_1/l
     var = sum_2/l-mean**2
-    i_t =var/mean
+    i_t =var/mean**2
     I_t.append(i_t)
-print(I_t)
-print(var_2)
+print('N_t: {0}'.format(N_t))
+print('I_t: {0}'.format(I_t))
+print('var: {0}'.format(var_2))
 
 with open ('cwnd.txt', 'w') as c:
     c.writelines(cw)
@@ -120,7 +137,7 @@ for k in range(len(c)):
     if len(c[k]) != 0:
         wait.append(s/len(c[k]))
 
-print(queue,wait)
+print('queue & wait: {0} {1}'.format(queue,wait))
 
     
 # declare a figure object to plot
@@ -136,10 +153,27 @@ plt.title('time-cwnd')
 
 fig= plt.figure(2)
 plt.plot(queue,wait)
+plt.title('queue-wait')
 
 fig= plt.figure(3)
 t_t = [i for i in range(1,len(I_t)+1)]
-plt.plot(t_t,I_t)
+plt.plot(create,I_t)
+plt.title('I_t')
+
+# the arrival interval
+fig= plt.figure(4)
+plt.plot(create[1:],interval)
+plt.title('The arrival interval')
+
+# N_t
+fig= plt.figure(5)
+plt.plot(create,id)
+plt.title('N_t')
+
+# the vartual waiting time
+fig= plt.figure(6)
+plt.plot(served,service_time)
+plt.title('The vartual waiting time')
 
 # show the figure
 plt.show()

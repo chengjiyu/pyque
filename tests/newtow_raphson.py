@@ -27,4 +27,4 @@ def NRSquareroot(x,ellipson):
     G = np.array([[1-G_1,G_1], [G_2,1-G_2]])
     g = np.array([[G_2/(G_1+G_2),G_1/(G_1+G_2)]])
     print(G, g)
-NRSquareroot(0,0.0001)
+NRSquareroot(0,0.000001)

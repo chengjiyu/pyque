@@ -97,7 +97,7 @@ for i in q:
     else:
         Gp = (1-P-i)*Tp
     G.append(Gp)
-print(G)
+print("goodput：{0}".format(G))
 T = [Tp]*len(G)
 fig= plt.figure(7)
 plt.plot(G, 'b')
