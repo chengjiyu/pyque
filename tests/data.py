@@ -18,6 +18,7 @@ buffer = []     # 保存过滤得到的 buffer size 行
 length = []     # 保存队列长度
 success = []    # 成功接收的包
 failure = []    # 接收失败的包
+cwnd_time = []  # 窗口反馈时间
 
 match = ['cwnd']
 match1 = ['ssth']
@@ -48,10 +49,10 @@ for i in range(len(data)):
     if match6 == re.findall(r'The source received feedback for transmission failure', data[i]):
         failure.append(data[i])
 # 丢包率
-loss = len(failure)/(len(success)+(len(failure)))
-print('丢包率 ： %f' %(loss*100))
+P = len(failure)/(len(success)+(len(failure)))
+print('丢包率 ： %f %%' %(P*100))
 # 吞吐量
-th = len(success)*1400/1000
+th = (len(success)+(len(failure)))/5000
 print('吞吐量 ： %f' %th)
 
 # 找到cwnd的值           
@@ -83,12 +84,45 @@ print('ID: {0}'.format(id))
 print('create: {0}'.format(create))
 print('service_time: {0}'.format(service_time))
 print('served_time: {0}'.format(served))
+print(len(ss[:len(served)]),len(cw[:len(served)]),len(served))
+# 计算超时的丢包率
+t = 4.75
+j = 0
+pkl = []
+
+for i in range(len(service_time)):
+    if service_time[i] > t:
+        j += 1
+        loss = j/(i+1)
+        pkl.append(loss)
+    else:
+        loss = j/(i+1)
+        if loss == 0:
+            loss += 1
+        pkl.append(loss)
+print('由于超时的丢包率：{0}'.format(pkl))
+
+# 计算吞吐量
+T = []
+G = []
+for i in range(10,len(id)):
+    Tp = id[i]/create[i]
+    T.append(Tp)
+
+for i in pkl:
+    if i == 1:
+        Gp = 0
+    else:
+        Gp = (1-P-i)*th
+    G.append(Gp)
+print('Throughput: {}'.format(T))
+print('Goopput: {}'.format(G))
 
 # 找到 packet arrival interval
-def min(x,y):
+def sub(x,y):
     return x-y
 create_2 = create[1:]
-interval = list(map(min,create_2,create))
+interval = list(map(sub,create_2,create))
 print('interval: {0}'.format(interval))
 
 # 找到队列长度值
@@ -96,7 +130,7 @@ for i in range(len(buffer)):
     m = re.findall(r'\d+\.?\d*',buffer[i])
     length.append(int(m[0]))
 length = length[0:len(service_time)]
-print('queue size: {0}'.format(length))
+print(len(length),'queue size: {0}'.format(length))
 
 # 计算I = Var（X）/E(X)
 N = []
@@ -115,7 +149,7 @@ for i in id:
     mean = sum_1/l
     var = sum_2/l-mean**2
     i_t =var/mean**2
-    I_t.append(i_t)
+    I_t.append(i_t*30)
 print('N_t: {0}'.format(N_t))
 print('I_t: {0}'.format(I_t))
 print('var: {0}'.format(var_2))
@@ -144,8 +178,8 @@ print('queue & wait: {0} {1}'.format(queue,wait))
 fig = plt.figure(1)
 
 # plot tps
-plt.plot(cw, 'b')
-plt.plot(ss, 'r')
+plt.plot(served,cw[:len(served)], 'b')
+plt.plot(served,ss[:len(served)], 'r')
 
 # advance settings
 plt.title('time-cwnd')
@@ -175,6 +209,24 @@ fig= plt.figure(6)
 plt.plot(served,service_time)
 plt.title('The vartual waiting time')
 
+# the packet loss due to timeout
+fig= plt.figure(7)
+plt.plot(create,pkl)
+plt.title('Packet loss')
+
+# the goodput
+fig= plt.figure(8)
+plt.plot(create,G)
+plt.plot(create[10:],T)
+plt.title('Goodput & Throughput')
+
+# the queue size
+sorted = np.sort(length)
+y = np.arange(len(sorted))/float(len(sorted)-1)
+
+fig= plt.figure(9)
+plt.plot(sorted,y)
+plt.title('queue size')
 # show the figure
 plt.show()
 

@@ -188,7 +188,7 @@ class Segment(object):
 
     def get_packet(self):
         return self.__pkt
-    packet = property(get_packet, set_packet, None, "the packet that this segment belongs to")
+    packet = property(get_packet, set_packet, None, "the packet that this segment belongs to")      # ???? problem： 2016/11/16
 
     @property
     def is_full_packet(self):

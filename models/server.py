@@ -46,7 +46,7 @@ class BaseServer():
         dice = random.random()
         # add timeout by chengjiyu on 2016/10/8
         rtt = service_time
-        if rtt < 2.75:
+        if rtt < 3.75:
             if error:
                 serve_pdu.on_dropped()
             else:

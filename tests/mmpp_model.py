@@ -75,7 +75,7 @@ plt.title('The arrival interval')
 # --------------------------------------------packet loss-------------------------------------------
 P = 0.001
 q = []      # packet loss
-for i in range(1,47):
+for i in range(1,5000):
     if i <= 3:
         q_i = 1.
     else:

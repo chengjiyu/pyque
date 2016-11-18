@@ -46,7 +46,6 @@ class MMPPModel(BaseSourceModel):
         self.__ssth = 65535
         self.__accumulator = 0
         self.__segment = 1400       # add segment size by chengjiyu on 2016/10/9
-
     def get_interval(self):
         state = self.__states[self.__cur_state]
         rate = self.__Lambda[state]
@@ -64,8 +63,10 @@ class MMPPModel(BaseSourceModel):
     def Q(self):
         return self.__Q
 
+
     # add tcp by chengjiyu on 2016/10/8
     def on_served(self):
+
         print('The source received feedback for successful delivering')
         self.__log.logger.info('The source received feedback for successful delivering')
         if self.__cwnd <= self.__ssth:
