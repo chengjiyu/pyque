@@ -82,11 +82,14 @@ class Packet(object):
         if self.serve_on:
             msg += '\t serve on = %f' % self.serve_on_time
         if self.dropped:
-            msg += '\t dropped = %f' % self.dropped_time        # add %f by chengjiyu on 2016/9/19
+            msg += '\t dropped = %s' % str(self.dropped_time)        # add %f by chengjiyu on 2016/9/19
         if self.served:
             msg += '\t served = {0:f} \t service_time = {1:f}' \
                 .format(self.served_time, self.served_time - self.arrive_time)        # self.serve_on_time --> self.arrive_time changed by chengjiyu on 2016/10/24
         return msg
+    def have_rtt(self):
+        return self.arrive_time
+
 
     def at_arrive(self):
         self.arrive = True
@@ -118,6 +121,7 @@ class Packet(object):
 
     # add timeout by chengjiyu on 2016/10/8
     def at_timeout(self):
+        self.dropped = True
         self.__source_model.on_timeout()
 
     def get(self, length):

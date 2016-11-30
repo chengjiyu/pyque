@@ -18,23 +18,31 @@ for t in range(1, 10000):
     K = J - a/c*d
     k.append(K)
 # the vartual waiting time distribution
-u = 2.5
+u = 2.181162
 g_1 =0.00588774 # (sigma_2*lambda_2)/(lambda_1*sigma_1+lambda_2*sigma_2)
 g_2 = 0.99411226 # (sigma_1*lambda_1)/(lambda_1*sigma_1+lambda_2*sigma_2)
+
+print(sigma_1+sigma_2)
+print(g_1*lambda_2+g_2*lambda_1)
+print(sigma_1*sigma_2)
 print("g 的稳态分布：%f %f" %(g_1, g_2))
 w = []      # vartual waiting time
-for s in range(1, 100):
+for s in range(1, 41):
     h = -s/(s+u)
     w_1 = 0.51*s*(s-sigma_1-sigma_2)+h*(g_1*lambda_2+g_2*lambda_1)
-    w_2 = (s+lambda_1*h-sigma_1)*(s+lambda_2*h-sigma_2)-sigma_1*sigma_2
+    # w_2 = (s+lambda_1*h-sigma_1)*(s+lambda_2*h-sigma_2)-sigma_1*sigma_2
+    w_2 = s*s+(h*(lambda_1+lambda_2)-(sigma_1-sigma_2))*s+h*(h*lambda_1*lambda_2-sigma_1*lambda_2-sigma_2*lambda_1)
     w_v = w_1/w_2
     w.append(w_v)
 
 # the arrival interval
 l = []
-for s in range(1,100):
+interval = []
+for s in range(0,30):
     l_1 = (0.209015861*s + 0.220922157)/(0.4203708920*(s**2+1.562812350*s+0.525541043))
+    l_2 = 0.49*np.e**(-0.5*s)+0.01*np.e**(-1.06*s)
     l.append(l_1)
+    interval.append(l_2)
 
 T = [i for i in range(1, 10000)]
 # --------------------------------------------I_t 的变化图------------------------------------------
@@ -61,21 +69,23 @@ fig= plt.figure(3)
 plt.plot(T,s)
 plt.title('N_t * I_t')
 
-s = [i for i in range(1,100)]
+s = [i for i in range(1,41)]
 # --------------------------------------------the vartual waiting time distribution-----------------
 fig= plt.figure(4)
 plt.plot(s,w)
 plt.title('The vartual waiting time distribution')
 
 # --------------------------------------------the arrival interval-----------------------------------
+inter = [i for i in range(0,30)]
 fig= plt.figure(5)
-plt.plot(s,l)
+plt.plot(inter,l,'b')
+plt.plot(inter,interval,'r')
 plt.title('The arrival interval')
 
 # --------------------------------------------packet loss-------------------------------------------
 P = 0.001
 q = []      # packet loss
-for i in range(1,5000):
+for i in range(1,1000):
     if i <= 3:
         q_i = 1.
     else:

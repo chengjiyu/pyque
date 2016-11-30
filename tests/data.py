@@ -2,6 +2,8 @@ import re
 import numpy as np
 from functools import reduce
 import matplotlib.pyplot as plt
+import math
+
 data = []       # 生成的原始数据
 cwnd = []       # 保存过滤得到含有 cwnd 的行
 cw = []         # 保存 cwnd 的值
@@ -12,6 +14,7 @@ ti = []
 finish = []     # 保存过滤得到完成服务 packet 信息
 id = []         # 保存结束服务 packet 的 id
 create = []      # 保存 packet 生成的时间 和 到达队列的时间
+create_inter = []
 service_time = []   # 保存结束服务 packet 的 服务时间
 served = []     # 保存服务结束的时间
 buffer = []     # 保存过滤得到的 buffer size 行
@@ -78,6 +81,7 @@ for i in range(len(finish)):
     m = re.findall(r'\d+\.?\d*',finish[i])
     id.append(float(m[0]))
     create.append(float(m[1]))
+    create_inter.append(float(m[1]))
     service_time.append(float(m[-1]))
     served.append(float(m[-2]))
 print('ID: {0}'.format(id))
@@ -86,7 +90,7 @@ print('service_time: {0}'.format(service_time))
 print('served_time: {0}'.format(served))
 print(len(ss[:len(served)]),len(cw[:len(served)]),len(served))
 # 计算超时的丢包率
-t = 4.75
+t = 5       # 4.75
 j = 0
 pkl = []
 
@@ -121,9 +125,30 @@ print('Goopput: {}'.format(G))
 # 找到 packet arrival interval
 def sub(x,y):
     return x-y
-create_2 = create[1:]
-interval = list(map(sub,create_2,create))
-print('interval: {0}'.format(interval))
+create_2 = create_inter[1:]
+interval = sorted(list(map(sub,create_2,create_inter)))
+interval_1 = []
+interval_2 = []
+for i in interval:
+    arr = int(i)
+    interval_1.append(arr)
+arrset = set(interval_1)
+for item in arrset:
+    a = interval_1.count(item)
+    interval_2.append(a/len(interval_1))
+
+print('interval: {0}'.format(interval_2))
+# the vartual waiting time
+service_time_0 = sorted(service_time)
+service_time_1 = []
+service_time_2 = []
+for i in service_time_0:
+    arr = int(i)
+    service_time_1.append(arr)
+arrset = set(service_time_1)
+for item in arrset:
+    a = service_time_1.count(item)
+    service_time_2.append(a/len(service_time_1))
 
 # 找到队列长度值
 for i in range(len(buffer)):
@@ -196,7 +221,8 @@ plt.title('I_t')
 
 # the arrival interval
 fig= plt.figure(4)
-plt.plot(create[1:],interval)
+# plt.plot(create[1:],interval_2)
+plt.plot(interval_2)
 plt.title('The arrival interval')
 
 # N_t
@@ -206,7 +232,7 @@ plt.title('N_t')
 
 # the vartual waiting time
 fig= plt.figure(6)
-plt.plot(served,service_time)
+plt.plot(service_time_2)
 plt.title('The vartual waiting time')
 
 # the packet loss due to timeout
@@ -216,8 +242,8 @@ plt.title('Packet loss')
 
 # the goodput
 fig= plt.figure(8)
-plt.plot(create,G)
-plt.plot(create[10:],T)
+plt.plot(create,G,'r')
+plt.plot(create[10:],T,'b')
 plt.title('Goodput & Throughput')
 
 # the queue size

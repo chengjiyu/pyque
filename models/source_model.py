@@ -39,7 +39,7 @@ class MMPPModel(BaseSourceModel):
         self.__state_transition = np.cumsum(self.__Q, axis = 1)
         self.__Lambda = np.atleast_1d(Lambda)
         self.__states = np.array([i for i in range(Lambda.shape[0])])
-        self.__cur_state = np.random.randint(0, self.__states[-1])      # self.__states=[0,1,2,3]; self.__cur_state=[0,1,2]
+        self.__cur_state = np.random.randint(0, self.__states[-1]+1)      # self.__states=[0,1,2,3]; self.__cur_state=[0,1,2]
         self.__init_cwnd = 1
         self.__init_ssth = 65535
         self.__cwnd = 1400

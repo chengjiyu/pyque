@@ -1,6 +1,7 @@
 import simpy
 from numpy import random
 
+from .unit import Packet
 from .unit import Pdu
 from .channel import ErrorChannel, Channel
 from .log import Logger
@@ -31,6 +32,8 @@ class BaseServer():
     # TODO: get the serve size according to channel state
     def get_serve_size(self):
         return self.__channel.get_available()
+    def get_arrive_time(self):
+        return Packet.have_rtt(self)
 
     # TODO: get the service time according to channel model
     # TODO: get error prob according to channel model
@@ -45,8 +48,10 @@ class BaseServer():
         self.__log.logger.info("server finish serving pdu at : {0:f}".format(self.__env.now))
         dice = random.random()
         # add timeout by chengjiyu on 2016/10/8
+        # print('-------------------',self.get_arrive_time())
+        # print(self.__env.now-self.get_arrive_time())
         rtt = service_time
-        if rtt < 3.75:
+        if rtt < 3.25:                  # it need to be further modified
             if error:
                 serve_pdu.on_dropped()
             else:
