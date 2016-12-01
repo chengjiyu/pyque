@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="95cf5c07-a043-4c71-87bf-55073047777e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/server.py" afterPath="$PROJECT_DIR$/models/server.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/source_model.py" afterPath="$PROJECT_DIR$/models/source_model.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/unit.py" afterPath="$PROJECT_DIR$/models/unit.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/data.py" afterPath="$PROJECT_DIR$/tests/data.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/mmpp_model.py" afterPath="$PROJECT_DIR$/tests/mmpp_model.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/test_qsys.py" afterPath="$PROJECT_DIR$/tests/test_qsys.py" />
-    </list>
+    <list default="true" id="95cf5c07-a043-4c71-87bf-55073047777e" name="Default" comment="" />
     <ignored path="untitled.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -43,6 +35,7 @@
     <SUITE FILE_PATH="coverage/pyque$multi_table.coverage" NAME="multi_table Coverage Results" MODIFIED="1477554042941" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../Python_projecteuler" />
     <SUITE FILE_PATH="coverage/untitled$model_test.coverage" NAME="model_test Coverage Results" MODIFIED="1452733786992" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/pyque$pan_prime_max.coverage" NAME="pan_prime_max Coverage Results" MODIFIED="1477554150115" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../Python_projecteuler" />
+    <SUITE FILE_PATH="coverage/pyque$383_Ransom_Note.coverage" NAME="383 Ransom Note Coverage Results" MODIFIED="1480583740422" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../Leetcode" />
     <SUITE FILE_PATH="coverage/pyque$test_qsys.coverage" NAME="test_qsys Coverage Results" MODIFIED="1480298053661" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/pyque$lambda.coverage" NAME="lambda Coverage Results" MODIFIED="1478744281721" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/pyque$newtow_raphson.coverage" NAME="newtow_raphson Coverage Results" MODIFIED="1479173441754" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
@@ -70,45 +63,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="data.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/data.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1144">
-              <caret line="72" column="10" selection-start-line="72" selection-start-column="10" selection-end-line="72" selection-end-column="10" />
-              <folding>
-                <element signature="e#0#9#0" expanded="true" />
-                <element signature="e#939#981#0" expanded="false" />
-                <element signature="e#1032#1718#0" expanded="false" />
-                <element signature="e#1923#1979#0" expanded="false" />
-                <element signature="e#2064#2120#0" expanded="false" />
-                <element signature="e#2194#2257#0" expanded="false" />
-                <element signature="e#2871#3059#0" expanded="false" />
-                <element signature="e#3206#3282#0" expanded="false" />
-                <element signature="e#4101#4168#0" expanded="false" />
-                <element signature="e#4339#4582#0" expanded="false" />
-                <element signature="e#4818#4922#0" expanded="false" />
-                <element signature="e#4961#5124#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mmpp_model.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/mmpp_model.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="20" column="12" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="test_qsys.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/test_qsys.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="13" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
-              <folding />
+            <state relative-caret-position="550">
+              <caret line="25" column="29" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="29" />
+              <folding>
+                <element signature="e#0#13#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -116,8 +78,8 @@
       <file leaf-file-name="source_model.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/source_model.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
-              <caret line="35" column="45" selection-start-line="35" selection-start-column="45" selection-end-line="35" selection-end-column="45" />
+            <state relative-caret-position="418">
+              <caret line="49" column="34" selection-start-line="49" selection-start-column="34" selection-end-line="49" selection-end-column="34" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
               </folding>
@@ -135,23 +97,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="unit.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="unit.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/unit.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-572">
-              <caret line="84" column="103" selection-start-line="84" selection-start-column="103" selection-end-line="84" selection-end-column="103" />
-              <folding>
-                <element signature="e#0#12#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="msg_queue.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/msg_queue.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-44">
-              <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+            <state relative-caret-position="138">
+              <caret line="38" column="12" selection-start-line="38" selection-start-column="12" selection-end-line="38" selection-end-column="12" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
               </folding>
@@ -162,31 +112,21 @@
       <file leaf-file-name="source.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/source.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="616">
-              <caret line="40" column="39" selection-start-line="40" selection-start-column="39" selection-end-line="40" selection-end-column="39" />
+            <state relative-caret-position="-264">
+              <caret line="45" column="37" selection-start-line="45" selection-start-column="37" selection-end-line="45" selection-end-column="37" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="server.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="server.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/models/server.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+            <state relative-caret-position="64">
+              <caret line="39" column="31" selection-start-line="39" selection-start-column="31" selection-end-line="39" selection-end-column="31" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Triangular_pentagon_hexagon_number.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../Python_projecteuler/Triangular_pentagon_hexagon_number.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="12" column="25" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -246,6 +186,8 @@
         <option value="$PROJECT_DIR$/tests/test_qsys.py" />
         <option value="$PROJECT_DIR$/models/server.py" />
         <option value="$PROJECT_DIR$/models/unit.py" />
+        <option value="$PROJECT_DIR$/../Leetcode/283 Move Zeroes.py" />
+        <option value="$PROJECT_DIR$/../Leetcode/383 Ransom Note.py" />
       </list>
     </option>
   </component>
@@ -258,7 +200,7 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1292" />
+    <option name="width" value="1296" />
     <option name="height" value="1000" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -293,7 +235,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Python_projecteuler/prime.py" />
     <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
-  <component name="RunManager" selected="Python.test_qsys">
+  <component name="RunManager" selected="Python.383 Ransom Note">
     <configuration default="false" name="test_qsys" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -330,24 +272,6 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="Triangular_pentagon_hexagon_number" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../Python_projecteuler" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="pyque" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../Python_projecteuler/Triangular_pentagon_hexagon_number.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
     <configuration default="false" name="mmpp_model" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -380,6 +304,24 @@
       <module name="pyque" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/parameter.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="383 Ransom Note" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../Leetcode" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="pyque" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../Leetcode/383 Ransom Note.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -595,17 +537,17 @@
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.test_qsys" />
       <item index="1" class="java.lang.String" itemvalue="Python.data (1)" />
-      <item index="2" class="java.lang.String" itemvalue="Python.Triangular_pentagon_hexagon_number" />
-      <item index="3" class="java.lang.String" itemvalue="Python.mmpp_model" />
-      <item index="4" class="java.lang.String" itemvalue="Python.parameter" />
+      <item index="2" class="java.lang.String" itemvalue="Python.mmpp_model" />
+      <item index="3" class="java.lang.String" itemvalue="Python.parameter" />
+      <item index="4" class="java.lang.String" itemvalue="Python.383 Ransom Note" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.test_qsys" />
-        <item index="1" class="java.lang.String" itemvalue="Python.data (1)" />
-        <item index="2" class="java.lang.String" itemvalue="Python.mmpp_model" />
-        <item index="3" class="java.lang.String" itemvalue="Python.parameter" />
-        <item index="4" class="java.lang.String" itemvalue="Python.Triangular_pentagon_hexagon_number" />
+        <item index="0" class="java.lang.String" itemvalue="Python.383 Ransom Note" />
+        <item index="1" class="java.lang.String" itemvalue="Python.test_qsys" />
+        <item index="2" class="java.lang.String" itemvalue="Python.data (1)" />
+        <item index="3" class="java.lang.String" itemvalue="Python.mmpp_model" />
+        <item index="4" class="java.lang.String" itemvalue="Python.parameter" />
       </list>
     </recent_temporary>
   </component>
@@ -727,7 +669,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1292" height="1000" extended-state="0" />
+    <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2849026" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -814,16 +756,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/Anaconda/Lib/site-packages/simpy/rt.py" />
-    <entry file="file://$USER_HOME$/Anaconda/Lib/site-packages/simpy/_compat.py" />
-    <entry file="file://$USER_HOME$/Anaconda/Lib/site-packages/statsmodels/base/model.py" />
-    <entry file="file://$PROJECT_DIR$/LICENSE">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1016,13 +948,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/tcp_model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="902">
-          <caret line="41" column="26" selection-start-line="41" selection-start-column="26" selection-end-line="41" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../Python_projecteuler/abnormal_pandigital.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="616">
@@ -1050,7 +975,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="66">
           <caret line="3" column="25" selection-start-line="3" selection-start-column="25" selection-end-line="3" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1059,7 +983,7 @@
         <state relative-caret-position="1144">
           <caret line="72" column="10" selection-start-line="72" selection-start-column="10" selection-end-line="72" selection-end-column="10" />
           <folding>
-            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#0#9#0" expanded="false" />
             <element signature="e#939#981#0" expanded="false" />
             <element signature="e#1032#1718#0" expanded="false" />
             <element signature="e#1923#1979#0" expanded="false" />
@@ -1083,44 +1007,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_qsys.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="13" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/mmpp_model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
+        <state relative-caret-position="418">
           <caret line="20" column="12" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/source_model.py">
+    <entry file="file://$PROJECT_DIR$/models/tcp_model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="35" column="45" selection-start-line="35" selection-start-column="45" selection-end-line="35" selection-end-column="45" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/source.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="616">
-          <caret line="40" column="39" selection-start-line="40" selection-start-column="39" selection-end-line="40" selection-end-column="39" />
+        <state relative-caret-position="704">
+          <caret line="32" column="55" selection-start-line="32" selection-start-column="55" selection-end-line="32" selection-end-column="55" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/models/msg_queue.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-44">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+        <state relative-caret-position="110">
+          <caret line="14" column="28" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_qsys.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="550">
+          <caret line="25" column="29" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/source_model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="49" column="34" selection-start-line="49" selection-start-column="34" selection-end-line="49" selection-end-column="34" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
           </folding>
@@ -1135,20 +1061,60 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/server.py">
+    <entry file="file://$PROJECT_DIR$/models/unit.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+        <state relative-caret-position="138">
+          <caret line="38" column="12" selection-start-line="38" selection-start-column="12" selection-end-line="38" selection-end-column="12" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/unit.py">
+    <entry file="file://$PROJECT_DIR$/models/source.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-572">
-          <caret line="84" column="103" selection-start-line="84" selection-start-column="103" selection-end-line="84" selection-end-column="103" />
+        <state relative-caret-position="-264">
+          <caret line="45" column="37" selection-start-line="45" selection-start-column="37" selection-end-line="45" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Leetcode/283 Move Zeroes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="11" column="22" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Leetcode/463 Island Perimeter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="11" selection-start-line="2" selection-start-column="11" selection-end-line="2" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Leetcode/389 Find the Difference.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="359">
+          <caret line="22" column="59" selection-start-line="22" selection-start-column="59" selection-end-line="22" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Leetcode/383 Ransom Note.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="469">
+          <caret line="28" column="21" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/server.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="39" column="31" selection-start-line="39" selection-start-column="31" selection-end-line="39" selection-end-column="31" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
           </folding>
