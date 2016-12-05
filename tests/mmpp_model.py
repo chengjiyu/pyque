@@ -78,9 +78,18 @@ plt.title('The vartual waiting time distribution')
 # --------------------------------------------the arrival interval-----------------------------------
 inter = [i for i in range(0,30)]
 fig= plt.figure(5)
-plt.plot(inter,l,'b')
-plt.plot(inter,interval,'r')
+plt.plot(inter,l,'b',label = "the LST of arrival interval")
+plt.plot(inter,interval,'r', label = "the arrival interval")
 plt.title('The arrival interval')
+plt.legend()
+
+# --------------------------------------------u = 2.181162的指数分布------------------------------------------
+fig= plt.figure(8)
+u = 2.181162
+x = np.arange(0, 10, 1)
+y = (1/u)*np.exp(-x/u)
+plt.plot(x,y)
+plt.title('Exponential: $\mu$=%f' % u)
 
 # --------------------------------------------packet loss-------------------------------------------
 P = 0.001
@@ -110,9 +119,10 @@ for i in q:
 print("goodput：{0}".format(G))
 T = [Tp]*len(G)
 fig= plt.figure(7)
-plt.plot(G, 'b')
-plt.plot(T, 'r')
+plt.plot(G, 'b', label = "Goodput")
+plt.plot(T, 'r', label = "Throughput")
 plt.title('Goodput & Throughput')
+plt.legend()
 
 # show the figure
 plt.show()

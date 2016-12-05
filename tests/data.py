@@ -15,8 +15,9 @@ finish = []     # 保存过滤得到完成服务 packet 信息
 id = []         # 保存结束服务 packet 的 id
 create = []      # 保存 packet 生成的时间 和 到达队列的时间
 create_inter = []
-service_time = []   # 保存结束服务 packet 的 服务时间
-served = []     # 保存服务结束的时间
+service_time = []   # 保存结束服务 packet 的 服务时长
+served_finish = []  # 保存结束服务时的时间
+served = []     # 保存服务了多长时间
 buffer = []     # 保存过滤得到的 buffer size 行
 length = []     # 保存队列长度
 success = []    # 成功接收的包
@@ -83,12 +84,13 @@ for i in range(len(finish)):
     create.append(float(m[1]))
     create_inter.append(float(m[1]))
     service_time.append(float(m[-1]))
-    served.append(float(m[-2]))
+    served_finish.append(float(m[-2]))
+    served.append(float(m[-3]))
 print('ID: {0}'.format(id))
 print('create: {0}'.format(create))
 print('service_time: {0}'.format(service_time))
 print('served_time: {0}'.format(served))
-print(len(ss[:len(served)]),len(cw[:len(served)]),len(served))
+print(len(ss[:len(served_finish)]),len(cw[:len(served_finish)]),len(served_finish))
 # 计算超时的丢包率
 t = 5       # 4.75
 j = 0
@@ -149,6 +151,20 @@ arrset = set(service_time_1)
 for item in arrset:
     a = service_time_1.count(item)
     service_time_2.append(a/len(service_time_1))
+print('service interval: {0}'.format(service_time_2))
+
+# the served time
+served_0 = sorted(served)
+served_1 = []
+served_2 = []
+for i in served_0:
+    arr = int(i)
+    served_1.append(arr)
+arrset = set(served_1)
+for item in arrset:
+    a = served_1.count(item)
+    served_2.append(a/len(served_1))
+print('served interval: {0}'.format(served_2))
 
 # 找到队列长度值
 for i in range(len(buffer)):
@@ -203,8 +219,8 @@ print('queue & wait: {0} {1}'.format(queue,wait))
 fig = plt.figure(1)
 
 # plot tps
-plt.plot(served,cw[:len(served)], 'b')
-plt.plot(served,ss[:len(served)], 'r')
+plt.plot(served_finish,cw[:len(served_finish)], 'b')
+plt.plot(served_finish,ss[:len(served_finish)], 'r')
 
 # advance settings
 plt.title('time-cwnd')
@@ -253,6 +269,12 @@ y = np.arange(len(sorted))/float(len(sorted)-1)
 fig= plt.figure(9)
 plt.plot(sorted,y)
 plt.title('queue size')
+
+# the served time
+fig= plt.figure(10)
+plt.plot(served_2)
+plt.title('The served time')
+
 # show the figure
 plt.show()
 

@@ -84,9 +84,9 @@ class Packet(object):
         if self.dropped:
             msg += '\t dropped = %s' % str(self.dropped_time)        # add %f by chengjiyu on 2016/9/19
         if self.served:
-            msg += '\t served = {0:f} \t service_time = {1:f}' \
-                .format(self.served_time, self.served_time - self.arrive_time)        # self.serve_on_time --> self.arrive_time changed by chengjiyu on 2016/10/24
-        return msg
+            msg += '\t served = {0:f} \t served_finish = {1:f} \t service_time = {2:f}' \
+                .format(self.served_time - self.serve_on_time, self.served_time, self.served_time - self.arrive_time)        # self.serve_on_time --> self.arrive_time changed by chengjiyu on 2016/10/24
+        return msg                                                   # add 'self.served_time - self.serve_on_time' by chengjiyu on 2016/12/5
     def have_rtt(self):
         return self.arrive_time
 
