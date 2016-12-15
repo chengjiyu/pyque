@@ -16,6 +16,7 @@ id = []         # 保存结束服务 packet 的 id
 create = []      # 保存 packet 生成的时间 和 到达队列的时间
 create_inter = []
 service_time = []   # 保存结束服务 packet 的 服务时长
+wait_time = []      # 保存从到达到开始服务的等待时间
 served_finish = []  # 保存结束服务时的时间
 served = []     # 保存服务了多长时间
 buffer = []     # 保存过滤得到的 buffer size 行
@@ -86,10 +87,12 @@ for i in range(len(finish)):
     service_time.append(float(m[-1]))
     served_finish.append(float(m[-2]))
     served.append(float(m[-3]))
+    wait_time.append(float(m[-1])-float(m[-3]))
 print('ID: {0}'.format(id))
 print('create: {0}'.format(create))
 print('service_time: {0}'.format(service_time))
 print('served_time: {0}'.format(served))
+print('wait_time: {0}'.format(wait_time))
 print(len(ss[:len(served_finish)]),len(cw[:len(served_finish)]),len(served_finish))
 # 计算超时的丢包率
 t = 5       # 4.75
@@ -140,7 +143,7 @@ for item in arrset:
     interval_2.append(a/len(interval_1))
 
 print('interval: {0}'.format(interval_2))
-# the vartual waiting time
+# the service_time time 从到达到服务结束的时间
 service_time_0 = sorted(service_time)
 service_time_1 = []
 service_time_2 = []
@@ -153,7 +156,20 @@ for item in arrset:
     service_time_2.append(a/len(service_time_1))
 print('service interval: {0}'.format(service_time_2))
 
-# the served time
+# the wait_time time 从到达到开始服务的时间
+wait_time_0 = sorted(wait_time)
+wait_time_1 = []
+wait_time_2 = []
+for i in wait_time_0:
+    arr = int(i*1)
+    wait_time_1.append(arr)
+arrset = set(wait_time_1)
+for item in arrset:
+    a = wait_time_1.count(item)
+    wait_time_2.append(a/len(wait_time_1))
+print('wait_time_2: {0}'.format(wait_time_2))
+
+# the served time 开始服务到服务结束时间
 served_0 = sorted(served)
 served_1 = []
 served_2 = []
@@ -248,8 +264,10 @@ plt.title('N_t')
 
 # the vartual waiting time
 fig= plt.figure(6)
-plt.plot(service_time_2)
+plt.plot(service_time_2, 'b',label = "the vartual waiting time")
+plt.plot(wait_time_2, 'r',label = "the waiting time arrival instants")
 plt.title('The vartual waiting time')
+plt.legend()
 
 # the packet loss due to timeout
 fig= plt.figure(7)

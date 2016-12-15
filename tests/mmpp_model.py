@@ -12,6 +12,7 @@ b = (sigma_1+sigma_2)**2*(lambda_1*sigma_2+lambda_2*sigma_1)
 I = 1.+(2*(lambda_1-lambda_2)**2*sigma_1*sigma_2)/((sigma_1+sigma_2)**2*(lambda_1*sigma_2+lambda_2*sigma_1))
 J = 1. + a/b
 k = []      # I_t
+Tp = (lambda_1*sigma_2+lambda_2*sigma_1)/(sigma_1+sigma_2) # lambda 的均值
 for t in range(1, 10000):
     c = (sigma_1+sigma_2)**3*(lambda_1*sigma_2+lambda_2*sigma_1)*t
     d = 1 - np.e ** ((-sigma_1 + sigma_2) * t)
@@ -27,20 +28,23 @@ print(g_1*lambda_2+g_2*lambda_1)
 print(sigma_1*sigma_2)
 print("g 的稳态分布：%f %f" %(g_1, g_2))
 w = []      # vartual waiting time
+w_aa = []   # the waiting time at customer arrival instants
 for s in range(1, 41):
     h = -s/(s+u)
     w_1 = 0.51*s*(s-sigma_1-sigma_2)+h*(g_1*lambda_2+g_2*lambda_1)
     # w_2 = (s+lambda_1*h-sigma_1)*(s+lambda_2*h-sigma_2)-sigma_1*sigma_2
     w_2 = s*s+(h*(lambda_1+lambda_2)-(sigma_1-sigma_2))*s+h*(h*lambda_1*lambda_2-sigma_1*lambda_2-sigma_2*lambda_1)
     w_v = w_1/w_2
+    w_a = (s+u)/Tp * (w_v-0.51)
     w.append(w_v)
+    w_aa.append(w_a)
 
 # the arrival interval
 l = []
 interval = []
 for s in range(0,30):
     l_1 = (0.209015861*s + 0.220922157)/(0.4203708920*(s**2+1.562812350*s+0.525541043))
-    l_2 = 0.49*np.e**(-0.5*s)+0.01*np.e**(-1.06*s)
+    l_2 = 0.49*np.e**(-0.48976*s)+0.01*np.e**(-1.0722*s)
     l.append(l_1)
     interval.append(l_2)
 
@@ -52,7 +56,7 @@ plt.title('I_t')
 
 v = []
 for t in range(1,10000):
-    s = (lambda_1*sigma_2+lambda_2*sigma_1)/(sigma_1+sigma_2)*t
+    s = Tp*t
     v.append(s)
 # --------------------------------------------N_t 的变化图------------------------------------------
 fig= plt.figure(2)
@@ -72,9 +76,10 @@ plt.title('N_t * I_t')
 s = [i for i in range(1,41)]
 # --------------------------------------------the vartual waiting time distribution-----------------
 fig= plt.figure(4)
-plt.plot(s,w)
-plt.title('The vartual waiting time distribution')
-
+plt.plot(s,w,'b',label = "the vartual waiting time")
+plt.plot(s,w_aa,'r', label = "the waiting time arrival instants")
+plt.title('The waiting time distribution')
+plt.legend()
 # --------------------------------------------the arrival interval-----------------------------------
 inter = [i for i in range(0,30)]
 fig= plt.figure(5)
@@ -89,7 +94,7 @@ u = 2.181162
 x = np.arange(0, 10, 1)
 y = (1/u)*np.exp(-x/u)
 plt.plot(x,y)
-plt.title('Exponential: $\mu$=%f' % u)
+plt.title('Exponential: 1/$\mu$=%f' % u)
 
 # --------------------------------------------packet loss-------------------------------------------
 P = 0.001
@@ -108,7 +113,6 @@ plt.title('Packet loss')
 # --------------------------------------------throughput---------------------------------------------
 T = []
 G = []
-Tp = (lambda_1*sigma_2+lambda_2*sigma_1)/(sigma_1+sigma_2)
 
 for i in q:
     if i == 1:
