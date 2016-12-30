@@ -245,6 +245,9 @@ plt.title('time-cwnd')
 fig= plt.figure(2)
 plt.plot(queue,wait)
 plt.title('queue-wait')
+plt.xlabel('queue size')# make axis labels
+plt.ylabel('wait time')
+plt.legend()
 
 fig= plt.figure(3)
 t_t = [i for i in range(1,len(I_t)+1)]
@@ -267,18 +270,26 @@ fig= plt.figure(6)
 plt.plot(service_time_2, 'b',label = "the vartual waiting time")
 plt.plot(wait_time_2, 'r',label = "the waiting time arrival instants")
 plt.title('The vartual waiting time')
+plt.xlabel('time')# make axis labels
+plt.ylabel('probability')
 plt.legend()
 
 # the packet loss due to timeout
 fig= plt.figure(7)
 plt.plot(create,pkl)
 plt.title('Packet loss')
+plt.xlabel('time')# make axis labels
+plt.ylabel('packet loss')
+plt.legend()
 
 # the goodput
 fig= plt.figure(8)
-plt.plot(create,G,'r')
-plt.plot(create[10:],T,'b')
+plt.plot(create,G,'r',label = "Goodput")
+plt.plot(create[10:],T,'b',label = "Throughput")
 plt.title('Goodput & Throughput')
+plt.xlabel('time')# make axis labels
+plt.ylabel('throughput')
+plt.legend()
 
 # the queue size
 sorted = np.sort(length)
