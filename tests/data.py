@@ -257,8 +257,14 @@ plt.title('I_t')
 # the arrival interval
 fig= plt.figure(4)
 # plt.plot(create[1:],interval_2)
-plt.plot(interval_2)
-plt.title('The arrival interval')
+x_1 = np.arange(0, 30, 1)
+y_1 = 0.49 * np.e ** (-0.48976 * x_1) + 0.01 * np.e ** (-1.0722 * x_1)
+plt.plot(x_1,y_1,'b',label = "the theoretical result")
+plt.plot(interval_2,'r',label = "the simulation result")
+plt.title('The arrival interval distribution')
+plt.xlabel('time')# make axis labels
+plt.ylabel('probability')
+plt.legend()
 
 # N_t
 fig= plt.figure(5)
@@ -301,8 +307,16 @@ plt.title('queue size')
 
 # the served time
 fig= plt.figure(10)
-plt.plot(served_2)
-plt.title('The served time')
+u = 2.181162
+x = np.arange(0, 10, 1)
+y = (1/u)*np.exp(-x/u)
+plt.plot(x,y,'b',label = "the theoretical result")
+plt.plot(served_2,'r',label = "the simulation result")
+plt.title('The served time distribution')
+plt.xlabel('time')# make axis labels
+plt.ylabel('probability')
+plt.legend()
+
 
 # show the figure
 plt.show()
