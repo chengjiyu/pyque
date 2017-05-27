@@ -34,7 +34,7 @@ class MMPPModel(BaseSourceModel):
         assert(len(np.shape(Lambda)) is 1)
         assert(np.shape(Q)[0] == np.shape(Q)[1])
         assert(np.shape(Q)[0] == len(Lambda))
-        self.__log = Logger('ack', 'data.txt')
+        self.__log = Logger('ACK', 'data.txt')
         self.__Q = np.atleast_2d(Q)
         self.__state_transition = np.cumsum(self.__Q, axis = 1)
         self.__Lambda = np.atleast_1d(Lambda)
@@ -46,6 +46,7 @@ class MMPPModel(BaseSourceModel):
         self.__ssth = 65535
         self.__accumulator = 0
         self.__segment = 1400       # add segment size by chengjiyu on 2016/10/9
+
     def get_interval(self):
         state = self.__states[self.__cur_state]
         rate = self.__Lambda[state]
@@ -53,6 +54,9 @@ class MMPPModel(BaseSourceModel):
         self.__cur_state = np.argwhere(self.__state_transition[self.__cur_state] > dice)[0][0]
         # Find the indices of array elements that are non-zero, grouped by element.
         # return position of the first meet specified condition
+        rate = 1.3 - 0.06 * np.random.choice(range(10))
+        print('------------------------'+ str(rate))
+
         return np.random.exponential(1./ rate) / rate
 
     @property
@@ -66,7 +70,6 @@ class MMPPModel(BaseSourceModel):
 
     # add tcp by chengjiyu on 2016/10/8
     def on_served(self):
-
         print('The source received feedback for successful delivering')
         self.__log.logger.info('The source received feedback for successful delivering')
         if self.__cwnd <= self.__ssth:
@@ -97,6 +100,8 @@ class MMPPModel(BaseSourceModel):
         self.__log.logger.info("cwnd is {0}, ssth is {1}".format(self.__cwnd, self.__ssth))
 
     def on_timeout(self):
+        print('The source received feedback for time out')
+        self.__log.logger.info('The source received feedback for time out')
         # self.__ssth = max(self.__cwnd // 2, 2)
         # self.__cwnd = 0
         self.__ssth = max(2 * self.__segment, self.__cwnd // 2)
@@ -110,11 +115,12 @@ class TcpSourceModel(BaseSourceModel):
 
     def __init__(self, rtt):
         self.__rtt = rtt
-        self.segsize = 1440
+        self.__segment = 1400
         self.__cwnd = 1
-        self.__ssth = 0xffff
+        self.__ssth = 65535
         self.__acked = 0
         self.__cum = 0
+        self.__log = Logger('ACK', 'data.txt')
 
     @property
     def cwnd(self):
@@ -125,25 +131,66 @@ class TcpSourceModel(BaseSourceModel):
         return self.__ssth
 
     def get_interval(self):
-        rate = self.segsize * self.__cwnd / self.__rtt      # ????
+        rate = self.__cwnd / self.__segment * self.__rtt
+        # self.__segment * self.__cwnd / self.__rtt变为self.__cwnd / self.__segment * self.__rtt 2017/04/30
         return np.random.exponential(1. / rate) / rate
 
     def on_served(self):
-        if self.__cwnd < self.__ssth:
-            self.__cwnd += 1
+        print('The source received feedback for successful delivering')
+        self.__log.logger.info('The source received feedback for successful delivering')
+        if self.__cwnd <= self.__ssth:
+            self.__cwnd += self.__segment
             print("Acked in Slow Start Phase")
             print("cwnd is {0}, ssth is {1}".format(self.__cwnd, self.__ssth))
+            self.__log.logger.info("cwnd is {0}, ssth is {1}".format(self.__cwnd, self.__ssth))
         else:
             print("Acked in Congestion avoidance")
-            self.__cum += 1
-            if self.__cum == self.__cwnd:
-                self.__cwnd += 1
-                self.__cum = 0
+            adder = self.__segment * self.__segment / self.__cwnd
+            adder = int(max(1.0, adder))
+            # self.__accumulator += 1
+            # if self.__accumulator == self.__cwnd:
+            # self.__cwnd += 1
+            # self.__accumulator = 0
+            self.__cwnd += adder
             print("cwnd is {0}, ssth is {1}".format(self.__cwnd, self.__ssth))
+            self.__log.logger.info("cwnd is {0}, ssth is {1}".format(self.__cwnd, self.__ssth))
 
-    # add duplicate acks by chengjiyu on 2016/9/28
     def on_droped(self):
-        self.__cwnd = max(self.__cwnd / 2, 1)
-        self.__ssth = max(self.__cwnd, 2)
+        print('The source received feedback for transmission failure')
+        self.__log.logger.info('The source received feedback for transmission failure')
+        self.__ssth = max(2 * self.__segment, self.__cwnd // 2)
+        self.__cwnd = self.__ssth# + 3 * self.__segment
+        # self.__cwnd = max(self.__cwnd // 2, 1)
+        # self.__ssth = max(self.__cwnd, 2)
         print("duplicate acks \ncwnd is {0}, ssth is {1}".format(self.__cwnd, self.__ssth))
+        self.__log.logger.info("cwnd is {0}, ssth is {1}".format(self.__cwnd, self.__ssth))
+
+    def on_timeout(self):
+        print('The source received feedback for time out')
+        self.__log.logger.info('The source received feedback for time out')
+        # self.__ssth = max(self.__cwnd // 2, 2)
+        # self.__cwnd = 0
+        self.__ssth = max(2 * self.__segment, self.__cwnd // 2)
+        self.__cwnd = self.__segment
+        print("time out \ncwnd is {0}, ssth is {1}".format(self.__cwnd, self.__ssth))
+        self.__log.logger.info("cwnd is {0}, ssth is {1}".format(self.__cwnd, self.__ssth))
+
+    # def on_served(self):
+    #     if self.__cwnd < self.__ssth:
+    #         self.__cwnd += 1
+    #         print("Acked in Slow Start Phase")
+    #         print("cwnd is {0}, ssth is {1}".format(self.__cwnd, self.__ssth))
+    #     else:
+    #         print("Acked in Congestion avoidance")
+    #         self.__cum += 1
+    #         if self.__cum == self.__cwnd:
+    #             self.__cwnd += 1
+    #             self.__cum = 0
+    #         print("cwnd is {0}, ssth is {1}".format(self.__cwnd, self.__ssth))
+    #
+    # # add duplicate acks by chengjiyu on 2016/9/28
+    # def on_droped(self):
+    #     self.__cwnd = max(self.__cwnd / 2, 1)
+    #     self.__ssth = max(self.__cwnd, 2)
+    #     print("duplicate acks \ncwnd is {0}, ssth is {1}".format(self.__cwnd, self.__ssth))
 

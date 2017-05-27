@@ -18,7 +18,6 @@ def session1():
     Lambda = np.array([1.0722, 0.48976])
     mmpp = source_model.MMPPModel(Q, Lambda)
     # tcp = source_model.TcpSourceModel(7000.)
-    # src_model = source_model.BaseSourceModel()
     src = source.BaseSource(env, mmpp)
     mq = msg_queue.MsgQueue(env)
     src.dst = mq

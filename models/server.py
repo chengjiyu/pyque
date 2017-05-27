@@ -51,7 +51,7 @@ class BaseServer():
         # print('-------------------',self.get_arrive_time())
         # print(self.__env.now-self.get_arrive_time())
         rtt = service_time
-        if rtt < 3.25:                  # it need to be further modified
+        if rtt < 5:                  # it need to be further modified, 应该计算从到达到结束服务的时间，service_time 是开始服务到结束服务时间
             if error:
                 serve_pdu.on_dropped()
             else:
