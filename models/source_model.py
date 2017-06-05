@@ -1,7 +1,7 @@
 import simpy
 import numpy as np
 from .log import Logger
-
+from .gol import gol
 
 class BaseSourceModel():
     '''The Base class for source model,
@@ -35,6 +35,7 @@ class MMPPModel(BaseSourceModel):
         assert(np.shape(Q)[0] == np.shape(Q)[1])
         assert(np.shape(Q)[0] == len(Lambda))
         self.__log = Logger('ACK', 'data.txt')
+        self.__gol = gol()
         self.__Q = np.atleast_2d(Q)
         self.__state_transition = np.cumsum(self.__Q, axis = 1)
         self.__Lambda = np.atleast_1d(Lambda)
@@ -46,6 +47,7 @@ class MMPPModel(BaseSourceModel):
         self.__ssth = 65535
         self.__accumulator = 0
         self.__segment = 1400       # add segment size by chengjiyu on 2016/10/9
+        self.__d = "d"             # 初始化当丢包时的窗口减小因子 chengjiyu on 2017/06/05
 
     def get_interval(self):
         state = self.__states[self.__cur_state]
@@ -54,9 +56,6 @@ class MMPPModel(BaseSourceModel):
         self.__cur_state = np.argwhere(self.__state_transition[self.__cur_state] > dice)[0][0]
         # Find the indices of array elements that are non-zero, grouped by element.
         # return position of the first meet specified condition
-        rate = 1.3 - 0.06 * np.random.choice(range(10))
-        print('------------------------'+ str(rate))
-
         return np.random.exponential(1./ rate) / rate
 
     @property
@@ -66,12 +65,11 @@ class MMPPModel(BaseSourceModel):
     @property
     def Q(self):
         return self.__Q
-
-
     # add tcp by chengjiyu on 2016/10/8
     def on_served(self):
         print('The source received feedback for successful delivering')
         self.__log.logger.info('The source received feedback for successful delivering')
+        self.__gol.set_value(self.__d, 0)  # 对丢包时的窗口减小因子赋值 chengjiyu on 2017/06/05
         if self.__cwnd <= self.__ssth:
             self.__cwnd += self.__segment
             print("Acked in Slow Start Phase")
@@ -98,10 +96,12 @@ class MMPPModel(BaseSourceModel):
         # self.__ssth = max(self.__cwnd, 2)
         print("duplicate acks \ncwnd is {0}, ssth is {1}".format(self.__cwnd, self.__ssth))
         self.__log.logger.info("cwnd is {0}, ssth is {1}".format(self.__cwnd, self.__ssth))
+        self.__gol.set_value(self.__d, 0.5)         # 对丢包时的窗口减小因子赋值 chengjiyu on 2017/06/05
 
     def on_timeout(self):
         print('The source received feedback for time out')
         self.__log.logger.info('The source received feedback for time out')
+        self.__gol.set_value(self.__d, 0.5)  # 对丢包时的窗口减小因子赋值 chengjiyu on 2017/06/05
         # self.__ssth = max(self.__cwnd // 2, 2)
         # self.__cwnd = 0
         self.__ssth = max(2 * self.__segment, self.__cwnd // 2)

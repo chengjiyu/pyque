@@ -3,8 +3,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # 参数初始化
-lambda_1 = 1.0722
-lambda_2 = 0.48976
+lambda_1 = 1.14197615
+lambda_2 = 0.86498876
 sigma_1 = 8.4733*10**(-4)
 sigma_2 = 5.0201*10**(-6)
 a = 2*(lambda_1-lambda_2)**2*sigma_1*sigma_2
@@ -149,7 +149,7 @@ for i in range(len(buffer)):
     m = re.findall(r'\d+\.?\d*',buffer[i])
     length.append(int(m[0]))
 length = length[0:len(service_time)]
-# print(len(length),'queue size: {0}'.format(length))
+print(len(length),'queue size: {0}'.format(length))
 # 计算拥塞丢包率
 pb = []
 yongse = 0
@@ -166,6 +166,14 @@ print('超时丢包率 ： %f %%' %(pt[-1]*100))
 # 吞吐量
 avg_th = (1-pr[-1]-pb[-1]-pt[-1])*(len(ACK))/5000
 print('平均吞吐量 ： %f' %avg_th)
+
+path = 'E:\chengjiyu\研究生毕设\结果图\仿真结果tcpmodel\\'
+with open (path+'result.txt', 'w') as r:
+    r.write('无线丢包率 ： %f %%' %(pr[-1]*100)+"\n")
+    r.write('拥塞丢包率 ： %f %%' %(pb[-1]*100)+"\n")
+    r.write('超时丢包率 ： %f %%' %(pt[-1]*100)+"\n")
+    r.write('平均吞吐量 ： %f' %avg_th)
+
 th = (len(ACK))/5000
 T = []
 for i in range(10,len(id)):
@@ -273,7 +281,7 @@ for k in range(len(c)):
 
 print('队长和平均等待时间queue & wait: {0} {1}'.format(queue,wait))
 # -----------------------------------------------画图----------------------------------------------
-path = 'E:\chengjiyu\研究生毕设\结果图\仿真结果\\'
+
 # declare a figure object to plot
 fig = plt.figure(1)     # 拥塞窗口变化
 # plot tps

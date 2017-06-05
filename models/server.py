@@ -6,7 +6,6 @@ from .unit import Pdu
 from .channel import ErrorChannel, Channel
 from .log import Logger
 
-
 class BaseServer():
     '''the base server model, associated with a transmission channel,
     do the serve process according to the channel capacity
