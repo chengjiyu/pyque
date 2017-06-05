@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="95cf5c07-a043-4c71-87bf-55073047777e" name="Default" comment="">
+    <list default="true" id="95cf5c07-a043-4c71-87bf-55073047777e" name="Default" comment="for laptop">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="untitled.iws" />
@@ -77,8 +77,8 @@
       <file leaf-file-name="test_qsys.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tests/test_qsys.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="528">
-              <caret line="24" column="19" lean-forward="true" selection-start-line="24" selection-start-column="19" selection-end-line="24" selection-end-column="19" />
+            <state relative-caret-position="374">
+              <caret line="29" column="44" lean-forward="true" selection-start-line="29" selection-start-column="44" selection-end-line="29" selection-end-column="44" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -93,6 +93,18 @@
               <caret line="6" column="23" lean-forward="false" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
+                <marker date="1496650125168" expanded="true" signature="173:2745" ph="..." />
+                <marker date="1496650125168" expanded="true" signature="346:626" ph="..." />
+                <marker date="1496650125168" expanded="true" signature="654:684" ph="..." />
+                <marker date="1496650125168" expanded="true" signature="721:798" ph="..." />
+                <marker date="1496650125168" expanded="true" signature="983:1029" ph="..." />
+                <marker date="1496650125168" expanded="true" signature="1060:1097" ph="..." />
+                <marker date="1496650125168" expanded="true" signature="1103:1212" ph="..." />
+                <marker date="1496650125168" expanded="true" signature="1244:2304" ph="..." />
+                <marker date="1496650125168" expanded="true" signature="2042:2255" ph="..." />
+                <marker date="1496650125168" expanded="true" signature="2339:2383" ph="..." />
+                <marker date="1496650125168" expanded="true" signature="2403:2745" ph="..." />
+                <marker date="1496650125168" expanded="true" signature="2423:2745" ph="..." />
               </folding>
             </state>
           </provider>
@@ -105,6 +117,9 @@
               <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
+                <marker date="1496650125168" expanded="true" signature="4502:4856" ph="..." />
+                <marker date="1496650125168" expanded="true" signature="4897:8459" ph="..." />
+                <marker date="1496650125168" expanded="true" signature="7177:8459" ph="..." />
               </folding>
             </state>
           </provider>
@@ -125,16 +140,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="154">
               <caret line="7" column="11" lean-forward="false" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="gol.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/gol.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="44">
-              <caret line="2" column="27" lean-forward="false" selection-start-line="2" selection-start-column="15" selection-end-line="2" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -177,7 +182,15 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="145">
               <caret line="296" column="0" lean-forward="false" selection-start-line="296" selection-start-column="0" selection-end-line="296" selection-end-column="0" />
-              <folding />
+              <folding>
+                <marker date="1496650125168" expanded="true" signature="8221:8255" ph="..." />
+                <marker date="1496650125168" expanded="true" signature="8289:8318" ph="..." />
+                <marker date="1496650125168" expanded="true" signature="8802:8856" ph="..." />
+                <marker date="1496650125168" expanded="true" signature="10262:10560" ph="..." />
+                <marker date="1496650125168" expanded="true" signature="11950:12076" ph="..." />
+                <marker date="1496650125168" expanded="true" signature="12209:12361" ph="..." />
+                <marker date="1496650125168" expanded="true" signature="13387:13514" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -218,15 +231,13 @@
       <find>lambda_avg</find>
       <find>__rtt</find>
       <find>pac_loss</find>
-      <find>SIM_TIME</find>
-      <find>T</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="golble" />
       </map>
     </option>
   </component>
@@ -269,18 +280,17 @@
         <option value="$PROJECT_DIR$/../Leetcode/383 Ransom Note.py" />
         <option value="$PROJECT_DIR$/models/unit.py" />
         <option value="$PROJECT_DIR$/../Python_projecteuler/20161128.py" />
+        <option value="$PROJECT_DIR$/tests/mmpp_model.py" />
         <option value="$PROJECT_DIR$/tests/data.txt" />
         <option value="$PROJECT_DIR$/models/msg_queue.py" />
         <option value="$PROJECT_DIR$/tests/para.py" />
+        <option value="$PROJECT_DIR$/models/server.py" />
         <option value="$PROJECT_DIR$/models/channel.py" />
         <option value="$PROJECT_DIR$/../bishi/zidianxiangdeng.py" />
-        <option value="$USER_HOME$/Desktop/a.py" />
-        <option value="$PROJECT_DIR$/tests/data.py" />
-        <option value="$PROJECT_DIR$/tests/mmpp_model.py" />
-        <option value="$PROJECT_DIR$/models/source_model.py" />
-        <option value="$PROJECT_DIR$/models/server.py" />
-        <option value="$PROJECT_DIR$/models/gol.py" />
         <option value="$PROJECT_DIR$/tests/test_qsys.py" />
+        <option value="$PROJECT_DIR$/tests/data.py" />
+        <option value="$PROJECT_DIR$/models/source_model.py" />
+        <option value="$USER_HOME$/Desktop/a.py" />
       </list>
     </option>
   </component>
@@ -545,9 +555,9 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.test_qsys" />
+        <item index="0" class="java.lang.String" itemvalue="Python.a" />
         <item index="1" class="java.lang.String" itemvalue="Python.data (1)" />
-        <item index="2" class="java.lang.String" itemvalue="Python.a" />
+        <item index="2" class="java.lang.String" itemvalue="Python.test_qsys" />
         <item index="3" class="java.lang.String" itemvalue="Python.zidianxiangdeng" />
         <item index="4" class="java.lang.String" itemvalue="Python.para" />
       </list>
@@ -685,28 +695,7 @@
       <option name="project" value="LOCAL" />
       <updated>1480919954003</updated>
     </task>
-    <task id="LOCAL-00015" summary="change the arrival rate">
-      <created>1495851646151</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1495851646151</updated>
-    </task>
-    <task id="LOCAL-00016" summary="add golbal variable">
-      <created>1496648566993</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1496648566993</updated>
-    </task>
-    <task id="LOCAL-00017" summary="add golbal variable">
-      <created>1496649299181</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1496649299181</updated>
-    </task>
-    <option name="localTasksCounter" value="18" />
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TodoView">
@@ -734,15 +723,26 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32947975" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29110512" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33294797" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21293801" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32947975" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2849026" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959402" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Concurrent Activities Diagram" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32996634" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39757413" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32947975" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -797,9 +797,7 @@
     <MESSAGE value="modfiy data.py: change packet loss and throughput; add queue size cdf" />
     <MESSAGE value="add exponential distribution and served time distribution" />
     <MESSAGE value="for laptop" />
-    <MESSAGE value="change the arrival rate" />
-    <MESSAGE value="add golbal variable" />
-    <option name="LAST_COMMIT_MESSAGE" value="add golbal variable" />
+    <option name="LAST_COMMIT_MESSAGE" value="for laptop" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -808,139 +806,26 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../Python_projecteuler/fac.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="6" column="11" lean-forward="false" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Python_projecteuler/irrational.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="29" column="33" lean-forward="false" selection-start-line="29" selection-start-column="33" selection-end-line="29" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Python_projecteuler/triangle.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Python_projecteuler/prime_cycle.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="12" column="12" lean-forward="false" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Python_projecteuler/abundant_number.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="22" column="28" lean-forward="false" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Python_projecteuler/time_length.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="15" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Python_projecteuler/reduction_fac.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="2" column="57" lean-forward="false" selection-start-line="2" selection-start-column="57" selection-end-line="2" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Python_projecteuler/try.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="6" column="11" lean-forward="false" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Python_projecteuler/mutil_pandigital.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="17" column="23" lean-forward="false" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Python_projecteuler/log_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="3" column="24" lean-forward="false" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Python_projecteuler/coin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="9" column="50" lean-forward="false" selection-start-line="9" selection-start-column="50" selection-end-line="9" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Python_projecteuler/prime.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="14" column="20" lean-forward="false" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Python_projecteuler/prime_10001th.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Python_projecteuler/pan_prime_max.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="30" column="18" lean-forward="false" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Python_projecteuler/power_5.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="29" column="27" lean-forward="false" selection-start-line="29" selection-start-column="27" selection-end-line="29" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Python_projecteuler/multi_table.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="9" column="16" lean-forward="false" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Python_projecteuler/abnormal_pandigital.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="28" column="14" lean-forward="false" selection-start-line="28" selection-start-column="14" selection-end-line="28" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Python_projecteuler/pentagon_number.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="4" column="37" lean-forward="false" selection-start-line="4" selection-start-column="37" selection-end-line="4" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Python_projecteuler/Triangular_pentagon_hexagon_number.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="12" column="25" lean-forward="false" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../Python_projecteuler/pandigital.py" />
+    <entry file="file://$PROJECT_DIR$/../Python_projecteuler/fac.py" />
+    <entry file="file://$PROJECT_DIR$/../Python_projecteuler/irrational.py" />
+    <entry file="file://$PROJECT_DIR$/../Python_projecteuler/triangle.py" />
+    <entry file="file://$PROJECT_DIR$/../Python_projecteuler/prime_cycle.py" />
+    <entry file="file://$PROJECT_DIR$/../Python_projecteuler/abundant_number.py" />
+    <entry file="file://$PROJECT_DIR$/../Python_projecteuler/time_length.py" />
+    <entry file="file://$PROJECT_DIR$/../Python_projecteuler/reduction_fac.py" />
+    <entry file="file://$PROJECT_DIR$/../Python_projecteuler/try.py" />
+    <entry file="file://$PROJECT_DIR$/../Python_projecteuler/mutil_pandigital.py" />
+    <entry file="file://$PROJECT_DIR$/../Python_projecteuler/log_test.py" />
+    <entry file="file://$PROJECT_DIR$/../Python_projecteuler/coin.py" />
+    <entry file="file://$PROJECT_DIR$/../Python_projecteuler/prime.py" />
+    <entry file="file://$PROJECT_DIR$/../Python_projecteuler/prime_10001th.py" />
+    <entry file="file://$PROJECT_DIR$/../Python_projecteuler/pan_prime_max.py" />
+    <entry file="file://$PROJECT_DIR$/../Python_projecteuler/power_5.py" />
+    <entry file="file://$PROJECT_DIR$/../Python_projecteuler/multi_table.py" />
+    <entry file="file://$PROJECT_DIR$/../Python_projecteuler/abnormal_pandigital.py" />
+    <entry file="file://$PROJECT_DIR$/../Python_projecteuler/pentagon_number.py" />
+    <entry file="file://$PROJECT_DIR$/../Python_projecteuler/Triangular_pentagon_hexagon_number.py" />
     <entry file="file://$PROJECT_DIR$/../Leetcode/283 Move Zeroes.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -969,13 +854,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../Python_projecteuler/prime_2000000.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="12" column="15" lean-forward="false" selection-start-line="12" selection-start-column="15" selection-end-line="12" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../Python_projecteuler/prime_2000000.py" />
     <entry file="file://$PROJECT_DIR$/models/tcp_model.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -983,20 +862,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../Python_projecteuler/20161128.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="5" column="4" lean-forward="false" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Python_projecteuler/20161205.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../Python_projecteuler/20161128.py" />
+    <entry file="file://$PROJECT_DIR$/../Python_projecteuler/20161205.py" />
     <entry file="file://$PROJECT_DIR$/tests/source_model_test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1011,10 +878,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../pyque/tests/test_qsys.py">
+    <entry file="file://$PROJECT_DIR$/tests/parameter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="23" column="16" lean-forward="true" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="16" />
+        <state relative-caret-position="0">
+          <caret line="3" column="25" lean-forward="false" selection-start-line="3" selection-start-column="25" selection-end-line="3" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../pyque/tests/test_qsys.py" />
+    <entry file="file://$PROJECT_DIR$/models/log.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="7" column="11" lean-forward="false" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1039,74 +915,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/data.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="354">
-          <caret line="159" column="110" lean-forward="false" selection-start-line="159" selection-start-column="110" selection-end-line="159" selection-end-column="110" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../bishi/zidianxiangdeng.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../pyqueue/tests/data.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="11" lean-forward="false" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../pyque/tests/data.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="11" lean-forward="false" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/a.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="3" column="8" lean-forward="true" selection-start-line="3" selection-start-column="8" selection-end-line="3" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/para.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="33" column="12" lean-forward="true" selection-start-line="33" selection-start-column="12" selection-end-line="33" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/mmpp_model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="19" column="17" lean-forward="false" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#18#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/parameter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="14" column="43" lean-forward="true" selection-start-line="14" selection-start-column="43" selection-end-line="14" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/data.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="296" column="0" lean-forward="false" selection-start-line="296" selection-start-column="0" selection-end-line="296" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/data.txt" />
     <entry file="file://$PROJECT_DIR$/models/unit.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2244">
@@ -1114,6 +923,14 @@
           <folding>
             <element signature="e#0#12#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../bishi/zidianxiangdeng.py" />
+    <entry file="file://$PROJECT_DIR$/tests/para.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="704">
+          <caret line="33" column="12" lean-forward="false" selection-start-line="33" selection-start-column="12" selection-end-line="33" selection-end-column="12" />
         </state>
       </provider>
     </entry>
@@ -1125,29 +942,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/log.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="7" column="11" lean-forward="false" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/server.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-528">
-          <caret line="6" column="23" lean-forward="false" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/models/msg_queue.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="199">
           <caret line="50" column="24" lean-forward="false" selection-start-line="50" selection-start-column="24" selection-end-line="50" selection-end-column="24" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../pyqueue/tests/data.py" />
+    <entry file="file://$PROJECT_DIR$/../pyque/tests/data.py" />
+    <entry file="file://$PROJECT_DIR$/tests/mmpp_model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-506">
+          <caret line="1" column="11" lean-forward="false" selection-start-line="1" selection-start-column="9" selection-end-line="1" selection-end-column="11" />
         </state>
       </provider>
     </entry>
@@ -1159,30 +967,64 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/Desktop/a.py" />
+    <entry file="file://$PROJECT_DIR$/tests/data.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="296" column="0" lean-forward="false" selection-start-line="296" selection-start-column="0" selection-end-line="296" selection-end-column="0" />
+          <folding>
+            <marker date="1496650125168" expanded="true" signature="8221:8255" ph="..." />
+            <marker date="1496650125168" expanded="true" signature="8289:8318" ph="..." />
+            <marker date="1496650125168" expanded="true" signature="8802:8856" ph="..." />
+            <marker date="1496650125168" expanded="true" signature="10262:10560" ph="..." />
+            <marker date="1496650125168" expanded="true" signature="11950:12076" ph="..." />
+            <marker date="1496650125168" expanded="true" signature="12209:12361" ph="..." />
+            <marker date="1496650125168" expanded="true" signature="13387:13514" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_qsys.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="29" column="44" lean-forward="true" selection-start-line="29" selection-start-column="44" selection-end-line="29" selection-end-column="44" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/server.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-528">
+          <caret line="6" column="23" lean-forward="false" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+            <marker date="1496650125168" expanded="true" signature="173:2745" ph="..." />
+            <marker date="1496650125168" expanded="true" signature="346:626" ph="..." />
+            <marker date="1496650125168" expanded="true" signature="654:684" ph="..." />
+            <marker date="1496650125168" expanded="true" signature="721:798" ph="..." />
+            <marker date="1496650125168" expanded="true" signature="983:1029" ph="..." />
+            <marker date="1496650125168" expanded="true" signature="1060:1097" ph="..." />
+            <marker date="1496650125168" expanded="true" signature="1103:1212" ph="..." />
+            <marker date="1496650125168" expanded="true" signature="1244:2304" ph="..." />
+            <marker date="1496650125168" expanded="true" signature="2042:2255" ph="..." />
+            <marker date="1496650125168" expanded="true" signature="2339:2383" ph="..." />
+            <marker date="1496650125168" expanded="true" signature="2403:2745" ph="..." />
+            <marker date="1496650125168" expanded="true" signature="2423:2745" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/models/source_model.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/gol.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="27" lean-forward="false" selection-start-line="2" selection-start-column="15" selection-end-line="2" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_qsys.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="24" column="19" lean-forward="true" selection-start-line="24" selection-start-column="19" selection-end-line="24" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
+            <marker date="1496650125168" expanded="true" signature="4502:4856" ph="..." />
+            <marker date="1496650125168" expanded="true" signature="4897:8459" ph="..." />
+            <marker date="1496650125168" expanded="true" signature="7177:8459" ph="..." />
           </folding>
         </state>
       </provider>
