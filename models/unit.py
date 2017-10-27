@@ -3,6 +3,7 @@ from collections import deque
 
 from . import source_model
 from .log import Logger
+from .gol import gol
 
 # ###############################  Source Units ###############################
 
@@ -59,6 +60,8 @@ class Packet(object):
         assert isinstance(sm, source_model.BaseSourceModel)
         self.__env = env
         self.__log = Logger('packet', 'data.txt')
+        self.__gol = gol()
+        self.__wt = "wait_time"
         self.__source_model = sm
         Packet.pkt_num += 1
         self.__index = Packet.pkt_num
@@ -83,13 +86,15 @@ class Packet(object):
             msg += '\t serve on = %f' % self.serve_on_time
         if self.dropped:
             msg += '\t dropped = %s' % str(self.dropped_time)        # add %f by chengjiyu on 2016/9/19
-        if self.served:
+        if self.served and self.serve_on:
+            print(self.served_time)
+            print(self.serve_on_time)
+            print(self.arrive_time)
             msg += '\t served = {0:f} \t served_finish = {1:f} \t service_time = {2:f}' \
-                .format(self.served_time - self.serve_on_time, self.served_time, self.served_time - self.arrive_time)        # self.serve_on_time --> self.arrive_time changed by chengjiyu on 2016/10/24
-        return msg                                                   # add 'self.served_time - self.serve_on_time' by chengjiyu on 2016/12/5
-    def have_rtt(self):
-        return self.arrive_time
-
+                .format(self.served_time - self.serve_on_time, self.served_time, self.served_time - self.arrive_time)
+                # self.serve_on_time --> self.arrive_time changed by chengjiyu on 2016/10/24    # add 'self.served_time - self.serve_on_time' by chengjiyu on 2016/12/5
+            self.__gol.set_value(self.__wt, self.served_time - self.arrive_time)  # 对等待时间赋值
+        return msg
 
     def at_arrive(self):
         self.arrive = True

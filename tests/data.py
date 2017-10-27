@@ -1,6 +1,8 @@
 import re
 import numpy as np
 import matplotlib.pyplot as plt
+import seaborn as sns
+from scipy import stats
 
 # 参数初始化
 lambda_1 = 1.14197615
@@ -30,6 +32,7 @@ ti = []
 finish = []     # 保存过滤得到完成服务 packet 信息
 id = []         # 保存结束服务 packet 的 id
 create = []      # 保存 packet 生成的时间 和 到达队列的时间
+size = []      # 保存 packet 生成的大小
 create_inter = []
 service_time = []   # 保存结束服务 packet 的 服务时长
 wait_time = []      # 保存从到达到开始服务的等待时间
@@ -104,6 +107,7 @@ for i in range(len(finish)):
     m = re.findall(r'\d+\.?\d*',finish[i])
     id.append(float(m[0]))
     create.append(float(m[1]))
+    size.append(float(m[2]))
     create_inter.append(float(m[1]))
     service_time.append(float(m[-1]))
     served_finish.append(float(m[-2]))
@@ -164,19 +168,20 @@ print('拥塞丢包率 ： %f %%' %(pb[-1]*100))
 print('超时丢包率 ： %f %%' %(pt[-1]*100))
 # ------------------------------------------------计算仿真吞吐量----------------------------------------------------
 # 吞吐量
-avg_th = (1-pr[-1]-pb[-1]-pt[-1])*(len(ACK))/5000
+avg_th = (1-pr[-1]-pb[-1]-pt[-1])*(id[-1])/5000
 print('平均吞吐量 ： %f' %avg_th)
 
 path = 'E:\chengjiyu\研究生毕设\结果图\仿真结果tcpmodel\\'
-with open (path+'result.txt', 'w') as r:
+with open (path+'result_'+'str(0.2)'+'.txt', 'w') as r:
     r.write('无线丢包率 ： %f %%' %(pr[-1]*100)+"\n")
     r.write('拥塞丢包率 ： %f %%' %(pb[-1]*100)+"\n")
     r.write('超时丢包率 ： %f %%' %(pt[-1]*100)+"\n")
     r.write('平均吞吐量 ： %f' %avg_th)
 
-th = (len(ACK))/5000
+th = (id[-1])/5000
+print(th)
 T = []
-for i in range(10,len(id)):
+for i in range(10,len([i for i in size if i == 0] )):
     Tp = id[i]/create[i]
     T.append(Tp)
 print('Throughput: {}'.format(T))
@@ -240,7 +245,7 @@ served_2 = []
 for i in served_0:
     arr = int(i)
     served_1.append(arr)
-arrset = set(served_1)
+arrset = list(set(served_1))
 for item in arrset:
     a = served_1.count(item)
     served_2.append(a/len(served_1))
@@ -288,8 +293,8 @@ fig = plt.figure(1)     # 拥塞窗口变化
 # advance settings
 plt.title('cwnd & ssth')
 # plt.xticks(range(len(time), time))
-plt.plot(served_finish,cw[:len(served_finish)],label = "cwnd")
-plt.plot(served_finish,ss[:len(served_finish)],label = "ssth")
+plt.plot(served_finish,cw[:len(served_finish)],label = "cwnd",color="blue")
+plt.plot(served_finish,ss[:len(served_finish)],label = "ssth",color="red")
 plt.xlabel('time')
 plt.ylabel('cwnd & ssth')
 plt.legend(loc='best')
@@ -297,7 +302,7 @@ plt.savefig(path + 'cwnd_ssth'+'.png')
 
 # 队列长度与等待时间关系图
 fig= plt.figure(2)
-plt.plot(queue,wait)
+plt.plot(queue,wait,color="blue")
 plt.title('queue-wait')
 plt.xlabel('queue size')# make axis labels
 plt.ylabel('wait time')
@@ -306,10 +311,10 @@ plt.savefig(path + 'queue_wait'+'.png')
 # N_t 时间 t 内到达的包数
 # Time = [i for i in range(1, 5000)]
 lambda_avg = 0.4931904061722993
-Th_Nt = [i*lambda_avg for i in range(1,5000)] #       N_t 理论值
+Th_Nt = [i*lambda_avg for i in create] #       N_t 理论值
 fig= plt.figure(3)
-plt.plot(Th_Nt,label = "the theoretical result")
-plt.plot(create, id, label = "the simulation result")
+plt.plot(create, Th_Nt,label = "the theoretical result",color="red")
+plt.plot(create, id, label = "the simulation result",color="blue")
 plt.title('N_t')
 plt.xlabel('time')
 plt.ylabel('N_t')
@@ -319,8 +324,8 @@ plt.savefig(path + 'N_t'+'.png')
 # I_t 图
 fig= plt.figure(4)
 t_t = [i for i in range(1,len(I_t)+1)]
-plt.plot(Th_It, label = "the theoretical result")
-plt.plot(create,I_t,label = "the simulation result")
+plt.plot(Th_It, label = "the theoretical result",color="red")
+plt.plot(create,I_t,label = "the simulation result",color="blue")
 plt.title('I_t')
 plt.xlabel('time')
 plt.ylabel('I_t')
@@ -332,15 +337,16 @@ fig= plt.figure(5)
 # plt.plot(create[1:],interval_2)
 x_1 = np.arange(0, 30, 1)
 y_1 = 0.49 * np.e ** (-0.48976 * x_1) + 0.01 * np.e ** (-1.0722 * x_1)
-plt.plot(x_1,y_1,label = "the theoretical result")
-plt.plot(interval_2,label = "the simulation result")
+plt.plot(x_1,y_1,label = "the theoretical result",color="red")
+# plt.plot(interval_2,label = "the simulation result")
+sns.distplot(interval,kde=False,fit=stats.expon,hist=False,label = "the simulation result")
 plt.title('The arrival interval distribution')
 plt.xlabel('time')# make axis labels
 plt.ylabel('probability')
 plt.legend(loc='best')
 plt.savefig(path + 'The arrival interval distribution'+'.png')
 
-# the vartual waiting time
+# ---------------------------------------the vartual waiting time-------------------------------------
 fig= plt.figure(6)
 u = 2.181162
 g_1 =0.00588774 # (sigma_2*lambda_2)/(lambda_1*sigma_1+lambda_2*sigma_2)
@@ -350,15 +356,18 @@ w = []      # vartual waiting time
 w_aa = []   # the waiting time at customer arrival instants
 for s in range(1, 21):
     h = -s/(s+u)
-    w_1 = 0.51*s*(s-sigma_1-sigma_2)+h*(g_1*lambda_2+g_2*lambda_1)
+    w_1 = 0.51*s*((s-sigma_1-sigma_2)+h*(g_1*lambda_2+g_2*lambda_1))
     w_2 = s*s+(h*(lambda_1+lambda_2)-(sigma_1-sigma_2))*s+h*(h*lambda_1*lambda_2-sigma_1*lambda_2-sigma_2*lambda_1)
     w_v = w_1/w_2
     w_a = (s+u)/lambda_avg  * (w_v-0.51)
     w.append(w_v)
     w_aa.append(w_a)
-plt.plot(w,label = "the theoretical vartual waiting time")
+x_2 = np.arange(0, 15, 1)
+y_2 = 0.49 * np.e ** (-0.48976 * x_2) + 0.01 * np.e ** (-1.0722 * x_2)
+plt.plot(x_2,y_2,label = "the theoretical vartual waiting time",color="red")
 # plt.plot(w_aa, label = "the theoretical waiting time arrival instants")
-plt.plot(service_time_2,label = "the vartual waiting time")
+# plt.plot(service_time_2,label = "the vartual waiting time")
+sns.distplot(service_time_0,kde=False,fit=stats.expon,hist=False,label = "the simulation vartual waiting time")
 # plt.plot(wait_time_2,label = "the waiting time arrival instants")
 plt.title('The vartual waiting time distribution')
 plt.xlabel('time')# make axis labels
@@ -366,24 +375,25 @@ plt.ylabel('probability')
 plt.legend(loc='best')
 plt.savefig(path + 'The vartual waiting time'+'.png')
 
-# The served time distribution
+# ----------------------------------------The served time distribution---------------------
 fig= plt.figure(7)
 u = 2.181162
-x = np.arange(0, 10, 1)
+x = np.arange(0, 8, 1)
 y = (1/u)*np.exp(-x/u)
-plt.plot(x,y,label = "the theoretical result")
-plt.plot(served_2,label = "the simulation result")
+plt.plot(x,y,label = "the theoretical result",color="red")
+# plt.plot(arrset,served_2,label = "the simulation result")
+sns.distplot(served_0,kde=False,fit=stats.expon,hist=False,label = "the simulation result")
 plt.title('The served time distribution')
 plt.xlabel('time')# make axis labels
 plt.ylabel('probability')
 plt.legend(loc='best')
 plt.savefig(path + 'The served time distribution'+'.png')
 
-# the throughput
+# -------------------------------------------------------the throughput--------------------------------------
 Th_T = [lambda_avg]*5000
 fig= plt.figure(8)
-plt.plot(Th_T, label="the theoretical result")
-plt.plot(create[10:],T,label="the simulation result")
+plt.plot(Th_T, label="the theoretical result",color="red")
+plt.plot(create[10:],T,label="the simulation result",color="blue")
 plt.title('Throughput')
 plt.xlabel('time')# make axis labels
 plt.ylabel('throughput')
@@ -398,9 +408,9 @@ for i in cw:
     a.append(int(i)/1400)
 for i in a:
     if i <= 3:
-        q_i = 1.
+        q_i = 0.
     else:
-        q_i = ((1-(1-P)**3)*(1+(1-P)**3-(1-P)**i)) / (1-(1-P)**i)
+        q_i = ((1-(1-P)**3)*(1+(1-P)**3-(1-P)**i)) / (1-(1-P)**i)/3
     q.append(q_i)
 Th_G = []   # 理论实际吞吐量
 total_loss = 0  # 临时存储总丢包
@@ -408,25 +418,25 @@ loss_timeout = []   # packet loss due to timeout average
 for n, i in enumerate(q,1):
     total_loss += i
     loss_to = total_loss / n
-    loss_timeout.append(loss_to+P+0.0083)
-    Gp = (1-P-loss_to-0.0083)*lambda_avg
+    loss_timeout.append(loss_to)
+    Gp = (1-P-loss_to-pb[-1])*lambda_avg
     Th_G.append(Gp)
 fig= plt.figure(9)
 Th_Gxlabel  = [i*2 for i in range(len(Th_G))]
-plt.plot(Th_Gxlabel[:2500],Th_G[:2500], label="the theoretical result")
-plt.plot(create,sim_G,label="the simulation result")
+plt.plot(Th_Gxlabel[:2500],Th_G[:2500], label="the theoretical result",color="red")
+plt.plot(create,sim_G,label="the simulation result",color="blue")
 plt.title('Goodput')
 plt.xlabel('time')# make axis labels
 plt.ylabel('goodput')
 plt.legend(loc='best')
 plt.savefig(path + 'goodput'+'.png')
 
-# the packet loss due to timeout
+# --------------------------------------------------the packet loss due to timeout------------------------------
 fig = plt.figure(10)
 q_xlabel  = [i*2 for i in range(len(q))]
-plt.plot(q_xlabel[:2500],loss_timeout[:2500],label = "the theoretical result")
+plt.plot(q_xlabel[:2500],loss_timeout[:2500],label = "the theoretical result",color="red")
 # plt.plot(create,pt,label = "the simulation result")
-plt.plot(create,pac_loss,label = "the simulation total packet loss")
+plt.plot(create,pac_loss,label = "the simulation total packet loss",color="blue")
 plt.title('Packet loss')
 plt.xlabel('time')# make axis labels
 plt.ylabel('packet loss')
@@ -442,7 +452,9 @@ for i in range(10):
 # y = np.arange(len(sorted))/float(len(sorted)-1)
 # plt.plot(sorted,y)
 # plt.plot(np.cumsum(length))
-plt.plot([i for i in range(10)],queue_pro)
+# plt.plot([i for i in range(10)],queue_pro)
+sns.distplot(length,kde=False,fit=stats.expon,label = "the queue size")
+# sns.distplot(service_time_0,kde=False,fit=stats.expon,hist=False,label = "the vartual waiting time")
 plt.title('queue size')
 plt.xlabel('queue size')# make axis labels
 plt.ylabel('cumulative distribution probability')
@@ -450,7 +462,7 @@ plt.savefig(path + 'queue size'+'.png')
 
 # -----------------------------------------------------RTT-------------------------------------------------------------
 fig = plt.figure(12)
-plt.plot(create, service_time)
+plt.plot(create, service_time,color="blue")
 plt.title('RTT')
 plt.xlabel('time')# make axis labels
 plt.ylabel('RTT')

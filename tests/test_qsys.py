@@ -25,8 +25,9 @@ def session1():
     b = v * fai * (
     (Q_th - L).I ** 2 * L * (1 - d) * (In - (1 - d) * (Q_th - L).I * L).I * (Q_th - L).I ** 2 * L - (Q_th - L).I ** 3 * L) * e
     print("----------------------------", (b * l).tolist())
-    Q = np.array([[0.7716, 0.2284], [0.5, 0.5]])      # [[1.0 - 0.4567804514083193434060809550457*z,0.4567804514083193434060809550457*z], [z,1-z]]
-    Lambda = np.array((b * l).tolist()[0])   # [1.0722,0.48976]
+    Q = np.array([[1-0.260364857303, 0.260364857303], [0.43, 0.57]])      # [[1.0 - 0.4567804514083193434060809550457*z,0.4567804514083193434060809550457*z], [z,1-z]]
+    # Lambda = np.array((b * l).tolist()[0])   # [1.0722,0.48976]
+    Lambda = np.array([1.0722, 0.48976])
     mmpp = source_model.MMPPModel(Q, Lambda)
     # tcp = source_model.TcpSourceModel(7000.)
     src = source.BaseSource(env, mmpp)

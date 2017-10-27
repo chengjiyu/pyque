@@ -23,7 +23,8 @@ $$
 \boldsymbol{P}(s+t)=\boldsymbol{P}(s)+\boldsymbol{P}(t)\\
 \boldsymbol{P}(0)=\boldsymbol{I} \quad \lim_{t\to0}\boldsymbol{P}(t)=\boldsymbol{I}
 $$
-由上面的C-K方程$\boldsymbol{P}(t)$可表示为$\boldsymbol{P}(t)=\boldsymbol{I}+\sum\limits_{n=1}^{\infty}\frac{t^n}{n!}\boldsymbol{Q}^n$
+由上面的C-K方程$\boldsymbol{P}(t)$可表示为
+$\boldsymbol{P}(t)=\boldsymbol{I}+\sum\limits_{n=1}^{\infty}\frac{t^n}{n!}\boldsymbol{Q}^n$
 显然，$\boldsymbol{P}(t)$完全由矩阵$\boldsymbol{Q}$确定，并且有
 $$
 \boldsymbol{P}'(0)=\lim_{t\to0}\frac{\boldsymbol{P}(t)-\boldsymbol{P}(0)}{t}=\lim_{t\to0}\frac{\boldsymbol{P}(t)-\boldsymbol{I}}{t}=\boldsymbol{Q}
@@ -94,7 +95,7 @@ P=
 0.99411&0.00589
 \end{bmatrix}
 \end{gather*}
-$,$\boldsymbol{\pi}=(0.9941103,0.0058897)$,$\overline{\lambda}=1.06877$,$\mu=2.181162$
+$,$\boldsymbol{\pi}=(0.0058897,0.9941103)$,$\overline{\lambda}=0.49319$,$\mu=2.181162$
 
 According to the LST (Laplac-Stieltjies Transform) $L[\boldsymbol{f}(x)]$, we know:
 $$
@@ -120,7 +121,7 @@ L&=\boldsymbol{\psi}\left\{\frac{1}{\mathrm{det}A}\begin{bmatrix} (s+\sigma_2+\l
 $$
 We derive the ILST (Inverse Laplace-Stieltjes Transform) of $L[X]$
 $$
-l[x]=0.49e^{-0.5t}+0.01e^{-1.06t}
+l[t]=0.49e^{-0.5t}+0.01e^{-1.06t}
 $$
 
 ### A.The number of arrivals over the interval
@@ -227,7 +228,7 @@ $$
 $$
 \boldsymbol{\lambda} =(\lambda_1,\lambda_2,\dots,\lambda_m)^T
 $$
-In our analysis, we assume that \boldsymbol{Q} is homogeneous and steady-state vector of the Markov chain is $\boldsymbol{\pi}$:
+In our analysis, we assume that $\boldsymbol{Q}$ is homogeneous and steady-state vector of the Markov chain is $\boldsymbol{\pi}$:
 $$
 \boldsymbol{\pi} Q = 0, \quad \boldsymbol{\pi e} = 1
 $$
@@ -239,7 +240,7 @@ $$
 \boldsymbol{\psi}=\boldsymbol{\pi \Lambda}/{\overline{\lambda}}
 $$
 (b)一个环境稳定的MMPP，初始概率矢量是 $\boldsymbol{Q}$ 的稳态矢量 $\boldsymbol{\pi}$. 时间起点不是一个到达时刻，而是按确保环境马尔可夫过程是稳态的原则来选取。
-依据上述模型，我们来分析 MMPP 的到达间隔时间分布。设 $X_n$ 表示第 (n-1) 个包和第 n 个包之间的到达间隔时间，and $J_n$ be the state of the Markov process at the $k$th arrival. So the sequence ${(J_n,X_n),n\ge 0}$ is a Markov renewal process, and state transition probability matrix is given by
+依据上述模型，我们来分析 MMPP 的到达间隔时间分布。设 $X_n$ 表示第 (n-1) 个包和第 n 个包之间的到达间隔时间，and $J_n$ be the state of the Markov process at the $$th arrival. So the sequence ${(J_n,X_n),n\ge 0}$ is a Markov renewal process, and state transition probability matrix is given by
 $$
 \begin{align}
 \boldsymbol{F}(x)&=\int_0^x{exp[(\boldsymbol{Q-\Lambda})\tau]d\tau\boldsymbol{\Lambda}} \\

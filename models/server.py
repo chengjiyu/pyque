@@ -5,6 +5,7 @@ from .unit import Packet
 from .unit import Pdu
 from .channel import ErrorChannel, Channel
 from .log import Logger
+from .gol import gol
 
 class BaseServer():
     '''the base server model, associated with a transmission channel,
@@ -15,6 +16,7 @@ class BaseServer():
         assert isinstance(env, simpy.Environment)
         self.__env = env
         self.__log = Logger('server', 'data.txt')
+        self.__gol = gol()
         self.__queue = queue
         self.__channel = None
         self.action = self.__env.process(self.run())
@@ -31,8 +33,6 @@ class BaseServer():
     # TODO: get the serve size according to channel state
     def get_serve_size(self):
         return self.__channel.get_available()
-    def get_arrive_time(self):
-        return Packet.have_rtt(self)
 
     # TODO: get the service time according to channel model
     # TODO: get error prob according to channel model
@@ -45,11 +45,8 @@ class BaseServer():
 
         print("server finish serving pdu at : {0:f}".format(self.__env.now))        # {0:d} --> {0:f} by chengjiyu on 2016/9/23
         self.__log.logger.info("server finish serving pdu at : {0:f}".format(self.__env.now))
-        dice = random.random()
-        # add timeout by chengjiyu on 2016/10/8
-        # print('-------------------',self.get_arrive_time())
-        # print(self.__env.now-self.get_arrive_time())
-        rtt = service_time
+        wt = self.__gol.get_value("wait_time")
+        rtt = service_time + wt
         if rtt < 5:                  # it need to be further modified, 应该计算从到达到结束服务的时间，service_time 是开始服务到结束服务时间
             if error:
                 serve_pdu.on_dropped()
